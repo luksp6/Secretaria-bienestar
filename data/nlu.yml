@@ -1,0 +1,260 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - hola
+    - como andas
+    - como estas
+    - buenas
+    - buen dia
+    - buenos dias
+    - buenas tardes
+    - buenas noches
+    - que tal
+
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+    - chau
+    - adios
+    - nos vemos
+    - hasta luego
+    - que descanses
+    - hasta la proxima
+    - que tengas un buen dia
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - si
+    - sip
+    - yep
+    - claro
+    - por supuesto
+    - suena bien
+    - correcto
+    - exacto
+    - asi es
+    - obvio
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - nop
+    - nunca
+    - no lo creo
+    - no me gusta
+    - de ninguna manera
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+    - perfecto
+    - genial
+    - excelente
+    - espectacular
+    - fantastico
+    - me siento un rey
+    - maravilloso
+    - estoy muy bien
+    - me siento muy bien
+    - extramadamente bien
+    - buen humor
+    - feliz
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+    - tuve un mal dia
+    - triste
+    - mal humor
+    - no me siento bien
+    - decepcionado
+    - muy triste
+    - deprimido
+    - infeliz
+
+- intent: pedir_contacto
+  examples: |
+
+- intent: pedir_web
+  examples: |
+
+- intent: pedir_documentos
+  examples: |
+
+- intent: pedir_informacion
+  examples: |
+
+- intent: preguntas_frecuentes
+  examples: |
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+    - sos un bot?
+    - sos una persona?
+    - sos humano?
+    - quien te creo?
+
+
+- entities: doc_certificado_alumno_regular
+  synonyms: |
+    - certificado de alumno regular
+    - certificado
+    - certificado de alumno
+
+- entities: doc_titulo
+  synonyms: |
+    - titulo
+    - diploma
+
+- entities: inf_talleres
+  synonyms:  |
+    - APRENDER A APRENDER. TÉCNICAS DE ESTUDIO BASADAS EN NEUROAPRENDIZAJE
+    - CONCRETA TUS OBJETIVOS. CRECIMIENTO PERSONAL
+    - TALLER DE LENGUA ESPAÑOLA
+    - TALLER DE “PRODUCCIÓN Y REALIZACIÓN AUDIOVISUAL”
+    - EDUCACIÓN CANINA INCLUSIVA
+    - INICIACIÓN AL DIBUJO
+    - TALLER DE DISEÑO DE INTERIORES
+    - DERECHO PARA NO ABOGADOS
+    - ABOGACÍA PREVENTIVA
+    - HERRAMIENTAS PARA UN NEGOCIO EXITOSO
+    - GESTIÓN GASTRONÓMICA ADMINISTRACIÓN Y CONTROL DE COSTOS E INGENIERÍA DE MENÚ
+    - INTRODUCCIÓN AL CONOCIMIENTO DEL CAFÉ, TÉ, CHOCOLATE Y YERBA MATE
+    - INTRODUCCIÓN AL CONOCIMIENTO DEL VINO Y MARIDAJE
+    - TALLER DE LENGUA ITALIANA
+    - COMUNICACIÓN Y MARKETING DIGITAL PARA EMPRENDEDORES Y CURIOSOS
+
+- entities: inf_calendario
+  synonyms:  |
+    - calendario
+    - cronograma
+    - feriados
+    - asuetos
+
+- entities: inf_fechas
+  synonyms:  |
+    - fechas de examen
+    - cuando rindo
+    - fechas de final
+    - fechas de finales
+
+- entities: inf_horarios
+  synonyms:  |
+    - cursadas
+    - horarios de cursada
+
+- entities: inf_ingreso
+  synonyms:  |
+    - ingreso a la universidad
+    - ingresar a la universidad
+    - ingresar a la facultad
+    - ingreso a la facultad
+
+- entities: inf_becas
+  synonyms:  |
+    - becas
+    - beca
+
+
+- entities: faq_documentacion_inscripcion
+  synonyms: |
+    - ¿Qué documentación tengo que presentar para inscribirme en las carreras que se dictan en la Unidad Académica?
+
+- entities: faq_modalidad_cursada
+  synonyms: |
+    -  ¿Las cursadas son a distancia o presenciales?
+
+- entities: faq_equivalencias
+  synonyms: |
+    -  ¿Cómo puedo pedir equivalencia de asignaturas de otras carreras? (de esta universidad o de otras instituciones)
+
+- entities: faq_regularidad
+  synonyms: |
+    -  ¿Puede perderse la condición de alumno regular?  ¿Cómo se conserva la regularidad?
+
+- entities: faq_vigencia_cursadas
+  synonyms: |
+    -  ¿Cuál es la vigencia de las cursadas?
+
+- entities: faq_aplazos_examen
+  synonyms: |
+    -  ¿Cuántos aplazos puedo tener en el examen final de una materia?
+
+- entities: faq_inscripcion_examen
+  synonyms: |
+    -  ¿Con cuánta anticipación debo inscribirme a un examen final?
+
+- entities: faq_seguir_cursando
+  synonyms: |
+    -  ¿Tengo que tener aprobado el primer año para seguir cursando?
+
+- entities: faq_siu_guarani
+  synonyms: |
+    -  ¿Qué es el SIU Guaraní?
