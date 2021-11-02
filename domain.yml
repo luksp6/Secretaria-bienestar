@@ -25,7 +25,7 @@ entities:
   - inf_becas
   - faq_documentacion_inscripcion
   - faq_modalidad_cursada
-  - faq_equivalencias
+  - faq_equivalencias 
   - faq_regularidad
   - faq_vigencia_cursadas
   - faq_aplazos_examen
@@ -49,6 +49,15 @@ responses:
 
   utter_goodbye:
   - text: "Bye"
+
+  utter_pedir_contacto:
+  - text: "Podras realizar tus consultas de forma presencial en la sede de la universidad, ubicada en: Calle 508 Nº 881 - Quequen, Buenos Aires, Argentina \n Tambien podras comunicarte por los siguientes telefonos:\n\t| +54 9 2262 451499\n\t| +54 9 2262 453232\n Tambien te dejo las distintas direcciones de correo electronico con las que cuenta la universidad:\n\t| General: uniqqn@quequen.unicen.edu.ar\n\t| Prosecretaría: prosecretaria@quequen.unicen.edu.ar\n\t| Área Docentes y Alumnos: alumnos@quequen.unicen.edu.ar\n\t| Área de Administración: administracion@quequen.unicen.edu.ar"
+
+  utter_pedir_web:
+  - text: "El sitio web oficial de nuestra universidad es: http://www.quequen.unicen.edu.ar/"
+
+  utter_pedir_documentos:
+  - text: ""
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
