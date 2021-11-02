@@ -8,6 +8,30 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - pedir_contacto
+  - pedir_web
+  - pedir_documentos
+  - pedir_informacion
+  - preguntas_frecuentes
+
+entities:
+  - doc_certificado_alumno_regular
+  - doc_titulo
+  - inf_talleres
+  - inf_calendario
+  - inf_fechas
+  - inf_horarios
+  - inf_ingreso
+  - inf_becas
+  - faq_documentacion_inscripcion
+  - faq_modalidad_cursada
+  - faq_equivalencias
+  - faq_regularidad
+  - faq_vigencia_cursadas
+  - faq_aplazos_examen
+  - faq_inscripcion_examen
+  - faq_seguir_cursando
+  - faq_siu_guarani
 
 responses:
   utter_greet:

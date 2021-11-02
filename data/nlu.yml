@@ -222,7 +222,6 @@ nlu:
     - becas
     - beca
 
-
 - entities: faq_documentacion_inscripcion
   synonyms: |
     - ¿Qué documentación tengo que presentar para inscribirme en las carreras que se dictan en la Unidad Académica?
