@@ -137,6 +137,7 @@ nlu:
 
 - intent: pedir_contacto
   examples: |
+    - contacto
 
 - intent: pedir_web
   examples: |
@@ -162,98 +163,81 @@ nlu:
     - quien te creo?
 
 
-- entities: doc_certificado_alumno_regular
-  synonyms: |
+- synonym: doc_certificado_alumno_regular
     - certificado de alumno regular
     - certificado
     - certificado de alumno
 
-- entities: doc_titulo
-  synonyms: |
+- synonym: doc_titulo
     - titulo
     - diploma
 
-- entities: inf_talleres
-  synonyms:  |
-    - APRENDER A APRENDER. T…CNICAS DE ESTUDIO BASADAS EN NEUROAPRENDIZAJE
+- synonym: inf_talleres
+    - APRENDER A APRENDER. T√âCNICAS DE ESTUDIO BASADAS EN NEUROAPRENDIZAJE
     - CONCRETA TUS OBJETIVOS. CRECIMIENTO PERSONAL
-    - TALLER DE LENGUA ESPA—OLA
-    - TALLER DE ìPRODUCCI”N Y REALIZACI”N AUDIOVISUALî
-    - EDUCACI”N CANINA INCLUSIVA
-    - INICIACI”N AL DIBUJO
-    - TALLER DE DISE—O DE INTERIORES
+    - TALLER DE LENGUA ESPA√ëOLA
+    - TALLER DE ‚ÄúPRODUCCI√ìN Y REALIZACI√ìN AUDIOVISUAL‚Äù
+    - EDUCACI√ìN CANINA INCLUSIVA
+    - INICIACI√ìN AL DIBUJO
+    - TALLER DE DISE√ëO DE INTERIORES
     - DERECHO PARA NO ABOGADOS
-    - ABOGACÕA PREVENTIVA
+    - ABOGAC√çA PREVENTIVA
     - HERRAMIENTAS PARA UN NEGOCIO EXITOSO
-    - GESTI”N GASTRON”MICA ADMINISTRACI”N Y CONTROL DE COSTOS E INGENIERÕA DE MEN⁄
-    - INTRODUCCI”N AL CONOCIMIENTO DEL CAF…, T…, CHOCOLATE Y YERBA MATE
-    - INTRODUCCI”N AL CONOCIMIENTO DEL VINO Y MARIDAJE
+    - GESTI√ìN GASTRON√ìMICA ADMINISTRACI√ìN Y CONTROL DE COSTOS E INGENIER√çA DE MEN√ö
+    - INTRODUCCI√ìN AL CONOCIMIENTO DEL CAF√â, T√â, CHOCOLATE Y YERBA MATE
+    - INTRODUCCI√ìN AL CONOCIMIENTO DEL VINO Y MARIDAJE
     - TALLER DE LENGUA ITALIANA
-    - COMUNICACI”N Y MARKETING DIGITAL PARA EMPRENDEDORES Y CURIOSOS
+    - COMUNICACI√ìN Y MARKETING DIGITAL PARA EMPRENDEDORES Y CURIOSOS
 
-- entities: inf_calendario
-  synonyms:  |
+- synonym: inf_calendario
     - calendario
     - cronograma
     - feriados
     - asuetos
 
-- entities: inf_fechas
-  synonyms:  |
+- synonym: inf_fechas
     - fechas de examen
     - cuando rindo
     - fechas de final
     - fechas de finales
 
-- entities: inf_horarios
-  synonyms:  |
+- synonym: inf_horarios
     - cursadas
     - horarios de cursada
 
-- entities: inf_ingreso
-  synonyms:  |
+- synonym: inf_ingreso
     - ingreso a la universidad
     - ingresar a la universidad
     - ingresar a la facultad
     - ingreso a la facultad
 
-- entities: inf_becas
-  synonyms:  |
+- synonym: inf_becas
     - becas
     - beca
 
-- entities: faq_documentacion_inscripcion
-  synonyms: |
-    - øQuÈ documentaciÛn tengo que presentar para inscribirme en las carreras que se dictan en la Unidad AcadÈmica?
+- synonym: faq_documentacion_inscripcion
+    - ¬øQu√© documentaci√≥n tengo que presentar para inscribirme en las carreras que se dictan en la Unidad Acad√©mica?
 
-- entities: faq_modalidad_cursada
-  synonyms: |
-    -  øLas cursadas son a distancia o presenciales?
+- synonym: faq_modalidad_cursada
+    -  ¬øLas cursadas son a distancia o presenciales?
 
-- entities: faq_equivalencias
-  synonyms: |
-    -  øCÛmo puedo pedir equivalencia de asignaturas de otras carreras? (de esta universidad o de otras instituciones)
+- synonym: faq_equivalencias
+    -  ¬øC√≥mo puedo pedir equivalencia de asignaturas de otras carreras? (de esta universidad o de otras instituciones)
 
-- entities: faq_regularidad
-  synonyms: |
-    -  øPuede perderse la condiciÛn de alumno regular?  øCÛmo se conserva la regularidad?
+- synonym: faq_regularidad
+    -  ¬øPuede perderse la condici√≥n de alumno regular?  ¬øC√≥mo se conserva la regularidad?
 
-- entities: faq_vigencia_cursadas
-  synonyms: |
-    -  øCu·l es la vigencia de las cursadas?
+- synonym: faq_vigencia_cursadas
+    -  ¬øCu√°l es la vigencia de las cursadas?
 
-- entities: faq_aplazos_examen
-  synonyms: |
-    -  øCu·ntos aplazos puedo tener en el examen final de una materia?
+- synonym: faq_aplazos_examen
+    -  ¬øCu√°ntos aplazos puedo tener en el examen final de una materia?
 
-- entities: faq_inscripcion_examen
-  synonyms: |
-    -  øCon cu·nta anticipaciÛn debo inscribirme a un examen final?
+- synonym: faq_inscripcion_examen
+    -  ¬øCon cu√°nta anticipaci√≥n debo inscribirme a un examen final?
 
-- entities: faq_seguir_cursando
-  synonyms: |
-    -  øTengo que tener aprobado el primer aÒo para seguir cursando?
+- synonym: faq_seguir_cursando
+    -  ¬øTengo que tener aprobado el primer a√±o para seguir cursando?
 
-- entities: faq_siu_guarani
-  synonyms: |
-    -  øQuÈ es el SIU GuaranÌ?
+- synonym: faq_siu_guarani
+    -  ¬øQu√© es el SIU Guaran√≠?
