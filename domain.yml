@@ -15,8 +15,7 @@ intents:
   - preguntas_frecuentes
 
 entities:
-  - doc_certificado_alumno_regular
-  - doc_titulo
+  - documento
   - inf_talleres
   - inf_calendario
   - inf_fechas
@@ -33,10 +32,15 @@ entities:
   - faq_seguir_cursando
   - faq_siu_guarani
 
+actions:
+  - action_documentos
+
 responses:
   utter_inicio_sesion:
   - text: "Hola, mi nombre es Luján y trabajo para la secretaría de bienestar de la Universidad Nacional del Centro de la Provincia de Buenos Aires, sub-sede Quequén.\n¿Me dirías tu nombre?"
 
+  utter_pedir_titulo:
+  - text: "Para iniciar el tramite de solicitud de titulo..."
 
   utter_greet:
   - text: "Hey! How are you?"

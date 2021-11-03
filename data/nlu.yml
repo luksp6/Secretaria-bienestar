@@ -137,13 +137,20 @@ nlu:
 
 - intent: pedir_contacto
   examples: |
-    - contacto
+    - cuales son los medios de contacto de la universidad?
+    - como me comunico con la sede?
 
 - intent: pedir_web
   examples: |
+    - web
+    - pagina
+    - sitio web
+    - pagina oficial
 
 - intent: pedir_documentos
   examples: |
+    - donde puedo iniciar el tramite para solicitar mi [certificado](documento)?
+    - donde puedo iniciar el tramite par solicitar mi [titulo](documento)?
 
 - intent: pedir_informacion
   examples: |
@@ -163,12 +170,12 @@ nlu:
     - quien te creo?
 
 
-- synonym: doc_certificado_alumno_regular
+- synonym: certificado
     - certificado de alumno regular
     - certificado
     - certificado de alumno
 
-- synonym: doc_titulo
+- synonym: titulo
     - titulo
     - diploma
 
