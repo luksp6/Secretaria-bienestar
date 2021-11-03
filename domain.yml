@@ -1,6 +1,7 @@
 version: "2.0"
 
 intents:
+  - identificarse
   - greet
   - goodbye
   - affirm
@@ -36,7 +37,7 @@ actions:
   - action_documentos
 
 responses:
-  utter_inicio_sesion:
+  utter_saludo:
   - text: "Hola, mi nombre es Luján y trabajo para la secretaría de bienestar de la Universidad Nacional del Centro de la Provincia de Buenos Aires, sub-sede Quequén.\n¿Me dirías tu nombre?"
 
   utter_pedir_titulo:
@@ -63,9 +64,6 @@ responses:
 
   utter_pedir_web:
   - text: "El sitio web oficial de nuestra universidad es: http://www.quequen.unicen.edu.ar/"
-
-  utter_pedir_documentos:
-  - text: ""
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
