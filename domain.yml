@@ -9,19 +9,26 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - identificarse
   - pedir_contacto
   - pedir_web
   - pedir_documentos
   - pedir_informacion
   - preguntas_frecuentes
+  - pedir_becas
+  - pedir_reseva_comedor
 
 entities:
+
+  - carreras  
   - documento
+  - nombres
   - inf_talleres
   - inf_calendario
   - inf_fechas
   - inf_horarios
   - inf_ingreso
+  - inf_carreras
   - inf_becas
   - faq_documentacion_inscripcion
   - faq_modalidad_cursada
@@ -33,12 +40,20 @@ entities:
   - faq_seguir_cursando
   - faq_siu_guarani
 
+slots:
+  nombre:
+    type: text
+
 actions:
   - action_documentos
+  - action_identificarse
 
 responses:
   utter_saludo:
   - text: "Hola, mi nombre es Luján y trabajo para la secretaría de bienestar de la Universidad Nacional del Centro de la Provincia de Buenos Aires, sub-sede Quequén.\n¿Me dirías tu nombre?"
+
+  utter__insistir_identificacion:
+  - text: "Necesito que me digas cuál es tu nombre para que podamos avanzar"
 
   utter_pedir_titulo:
   - text: "Para iniciar el tramite de solicitud de titulo..."

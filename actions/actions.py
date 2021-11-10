@@ -11,8 +11,23 @@ from typing import Any, Text, Dict, List
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.events import SlotSet
 
-class ActionHelloWorld(Action):
+class ActionIdentificarse(Action):
+
+    def name(self) -> Text:
+        return "action_identificarse"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        usuarios = open('usuarios.txt', 'a')
+
+        intent = tracker.latest_message['intent'].get('name')
+        if (str(intent) == "identificarse"):
+            dispatcher.utter_message(text = "¡Un gusto " + tracker.latest_message['entities'][0]['value'] + "!")
+            return [SlotSet("nombre", tracker.latest_message['entities'][0]['value'])]
+        return []
+
+class ActionDocumentos(Action):
 
     def name(self) -> Text:
         return "action_documentos"

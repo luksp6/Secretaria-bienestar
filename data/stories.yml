@@ -2,6 +2,24 @@ version: "2.0"
 
 stories:
 
+- story: inicio
+  steps: 
+  - intent: greet
+  - action: utter_saludo
+  - checkpoint: ya pidio nombre
+
+- story: se identifica
+  steps:
+  - checkpoint: ya pidio nombre
+  - intent: identificarse
+  - action: action_identificarse
+
+- story: no se identifica
+  steps:
+  - checkpoint: ya pidio nombre
+  - action: utter__insistir_identificacion
+  - checkpoint: ya pidio nombre
+
 - story: inicio sin nombre
   steps:
   - intent: greet
@@ -13,12 +31,16 @@ stories:
   steps:
   - intent: identificarse
   - action: utter_saludo
-  - action: identificarse
+  - action: action_identificarse
 
 - story: inicio forzoso
   steps:
   - intent: greet
   - action: utter_saludo
+  - intent: cualquier_cosa  ##PREGUNTAR A EMILIANO
+  - action: utter_insistir_identificacion 
+  - intent: identificarse
+  - action: action_identificarse
 
 - story: pedir contactos
   steps:

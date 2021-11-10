@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\actions"
   ],
+  "SelectedNode": "\\actions\\actions.py",
   "PreviewInSolutionExplorer": false
 }

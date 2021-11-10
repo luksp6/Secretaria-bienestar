@@ -134,6 +134,14 @@ nlu:
     - deprimido
     - infeliz
 
+- intent: identificarse
+  examples: |
+    - mi nombre es [nombre](nombres)
+    - me llamo [nombre](nombres)
+    - soy [nombre](nombres)
+    - hola, mi nombre es [nombre](nombres)
+    - hola, me llamo [nombre](nombres)
+
 - intent: pedir_contacto
   examples: |
     - cuales son los medios de contacto de la universidad?
@@ -151,8 +159,17 @@ nlu:
     - donde puedo iniciar el tramite para solicitar mi [certificado](documento)?
     - donde puedo iniciar el tramite par solicitar mi [titulo](documento)?
 
+#buscar expresiones regulares
 - intent: pedir_informacion
   examples: |
+    - me podrías dar informacion sobre el taller de [talleres](inf_talleres)?
+    - me podrías dar informacion sobre el [calendario](inf_calendario)?
+    - ¿cómo es el [calendario](inf_calendario) de este año?
+    - ¿cuáles son las [carreras](inf_carreras)?
+    - cuales son las [fechas](inf_fechas)?
+    - ¿cuáles son los [horarios](inf_horarios) de este año?
+    - ¿qué hay que hacer para [ingreso](inf_ingreso)?
+    - ¿que [becas](inf_becas) tenes disponible?
 
 - intent: preguntas_frecuentes
   examples: |
@@ -168,6 +185,15 @@ nlu:
     - sos humano?
     - quien te creo?
 
+- synonym: nombre
+    - lucas
+    - pablo
+    - luis
+    - analia
+    - emiliano
+    - matias
+    - marcelo
+    - nelson
 
 - synonym: certificado
     - certificado de alumno regular
@@ -178,7 +204,14 @@ nlu:
     - titulo
     - diploma
 
-- synonym: inf_talleres
+- synonym: carreras
+    - Ingenieria Sistemas
+    - Logistica
+    - tecnicatura en ambiente
+    - Ingenieria civil
+    - Ingenieria Industrial
+
+- synonym: talleres
     - APRENDER A APRENDER. TÉCNICAS DE ESTUDIO BASADAS EN NEUROAPRENDIZAJE
     - CONCRETA TUS OBJETIVOS. CRECIMIENTO PERSONAL
     - TALLER DE LENGUA ESPAÑOLA
@@ -195,31 +228,33 @@ nlu:
     - TALLER DE LENGUA ITALIANA
     - COMUNICACIÓN Y MARKETING DIGITAL PARA EMPRENDEDORES Y CURIOSOS
 
-- synonym: inf_calendario
+- synonym: calendario
     - calendario
     - cronograma
     - feriados
     - asuetos
 
-- synonym: inf_fechas
+- synonym: fechas
     - fechas de examen
     - cuando rindo
     - fechas de final
     - fechas de finales
 
-- synonym: inf_horarios
+- synonym: horarios
     - cursadas
     - horarios de cursada
 
-- synonym: inf_ingreso
+- synonym: ingreso
     - ingreso a la universidad
     - ingresar a la universidad
     - ingresar a la facultad
     - ingreso a la facultad
 
-- synonym: inf_becas
+- synonym: becas
     - becas
     - beca
+
+#ver cuando hagamos lo de preguntas frecuentes
 
 - synonym: faq_documentacion_inscripcion
     - ¿Qué documentación tengo que presentar para inscribirme en las carreras que se dictan en la Unidad Académica?
