@@ -11,36 +11,15 @@ stories:
 - story: se identifica
   steps:
   - checkpoint: ya pidio nombre
+  - checkpoint: no dice nombre
   - intent: identificarse
   - action: action_identificarse
 
 - story: no se identifica
   steps:
-  - checkpoint: ya pidio nombre
+  - checkpoint: no dice nombre
   - action: utter__insistir_identificacion
   - checkpoint: ya pidio nombre
-
-- story: inicio sin nombre
-  steps:
-  - intent: greet
-  - action: utter_saludo
-  - intent: identificarse
-  - action: action_identificarse
-
-- story: inicio con nombre
-  steps:
-  - intent: identificarse
-  - action: utter_saludo
-  - action: action_identificarse
-
-- story: inicio forzoso
-  steps:
-  - intent: greet
-  - action: utter_saludo
-  - intent: cualquier_cosa  ##PREGUNTAR A EMILIANO
-  - action: utter_insistir_identificacion 
-  - intent: identificarse
-  - action: action_identificarse
 
 - story: pedir contactos
   steps:
@@ -51,30 +30,3 @@ stories:
   steps:
   - intent: pedir_documentos
   - action: action_documentos
-
-- story: happy path
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
-
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye

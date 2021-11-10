@@ -19,13 +19,14 @@ class ActionIdentificarse(Action):
         return "action_identificarse"
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        usuarios = open('usuarios.txt', 'a')
+        #usuarios = open('usuarios.txt', 'a')
 
         intent = tracker.latest_message['intent'].get('name')
         if (str(intent) == "identificarse"):
-            dispatcher.utter_message(text = "¡Un gusto " + tracker.latest_message['entities'][0]['value'] + "!")
-            return [SlotSet("nombre", tracker.latest_message['entities'][0]['value'])]
-        return []
+            nombre = tracker.latest_message['entities'][0]['value']
+            salida = "¡Un gusto " + nombre + "!"
+            dispatcher.utter_message(text=str(salida))
+            return [SlotSet("nombre", nombre)]
 
 class ActionDocumentos(Action):
 

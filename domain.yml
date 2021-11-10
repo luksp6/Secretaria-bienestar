@@ -9,17 +9,14 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
-  - identificarse
   - pedir_contacto
   - pedir_web
   - pedir_documentos
   - pedir_informacion
-  - preguntas_frecuentes
-  - pedir_becas
-  - pedir_reseva_comedor
+ #- pedir_becas
+ #- pedir_reseva_comedor
 
 entities:
-
   - carreras  
   - documento
   - nombres
@@ -52,27 +49,14 @@ responses:
   utter_saludo:
   - text: "Hola, mi nombre es Luján y trabajo para la secretaría de bienestar de la Universidad Nacional del Centro de la Provincia de Buenos Aires, sub-sede Quequén.\n¿Me dirías tu nombre?"
 
+  utter_goodbye:
+  - text: "¡Hasta luego!"
+
   utter__insistir_identificacion:
   - text: "Necesito que me digas cuál es tu nombre para que podamos avanzar"
 
   utter_pedir_titulo:
   - text: "Para iniciar el tramite de solicitud de titulo..."
-
-  utter_greet:
-  - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
-
-  utter_goodbye:
-  - text: "Bye"
 
   utter_pedir_contacto:
   - text: "Podras realizar tus consultas de forma presencial en la sede de la universidad, ubicada en: Calle 508 Nº 881 - Quequen, Buenos Aires, Argentina \n Tambien podras comunicarte por los siguientes telefonos:\n\t| +54 9 2262 451499\n\t| +54 9 2262 453232\n Tambien te dejo las distintas direcciones de correo electronico con las que cuenta la universidad:\n\t| General: uniqqn@quequen.unicen.edu.ar\n\t| Prosecretaría: prosecretaria@quequen.unicen.edu.ar\n\t| Área Docentes y Alumnos: alumnos@quequen.unicen.edu.ar\n\t| Área de Administración: administracion@quequen.unicen.edu.ar"

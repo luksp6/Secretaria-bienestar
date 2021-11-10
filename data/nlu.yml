@@ -171,9 +171,6 @@ nlu:
     - ¿qué hay que hacer para [ingreso](inf_ingreso)?
     - ¿que [becas](inf_becas) tenes disponible?
 
-- intent: preguntas_frecuentes
-  examples: |
-
 - intent: bot_challenge
   examples: |
     - are you a bot?
@@ -186,6 +183,7 @@ nlu:
     - quien te creo?
 
 - synonym: nombre
+  examples: |
     - lucas
     - pablo
     - luis
@@ -196,15 +194,18 @@ nlu:
     - nelson
 
 - synonym: certificado
+  examples: |
     - certificado de alumno regular
     - certificado
     - certificado de alumno
 
 - synonym: titulo
+  examples: |
     - titulo
     - diploma
 
 - synonym: carreras
+  examples: |
     - Ingenieria Sistemas
     - Logistica
     - tecnicatura en ambiente
@@ -212,6 +213,7 @@ nlu:
     - Ingenieria Industrial
 
 - synonym: talleres
+  examples: |
     - APRENDER A APRENDER. TÉCNICAS DE ESTUDIO BASADAS EN NEUROAPRENDIZAJE
     - CONCRETA TUS OBJETIVOS. CRECIMIENTO PERSONAL
     - TALLER DE LENGUA ESPAÑOLA
@@ -229,56 +231,70 @@ nlu:
     - COMUNICACIÓN Y MARKETING DIGITAL PARA EMPRENDEDORES Y CURIOSOS
 
 - synonym: calendario
+  examples: |
     - calendario
     - cronograma
     - feriados
     - asuetos
 
 - synonym: fechas
+  examples: |
     - fechas de examen
     - cuando rindo
     - fechas de final
     - fechas de finales
 
 - synonym: horarios
+  examples: |
     - cursadas
     - horarios de cursada
 
 - synonym: ingreso
+  examples: |
     - ingreso a la universidad
     - ingresar a la universidad
     - ingresar a la facultad
     - ingreso a la facultad
 
 - synonym: becas
+  examples: |
     - becas
     - beca
 
 #ver cuando hagamos lo de preguntas frecuentes
 
 - synonym: faq_documentacion_inscripcion
+  examples: |
     - ¿Qué documentación tengo que presentar para inscribirme en las carreras que se dictan en la Unidad Académica?
 
 - synonym: faq_modalidad_cursada
+  examples: |
     -  ¿Las cursadas son a distancia o presenciales?
 
 - synonym: faq_equivalencias
+  examples: |
     -  ¿Cómo puedo pedir equivalencia de asignaturas de otras carreras? (de esta universidad o de otras instituciones)
 
 - synonym: faq_regularidad
+  examples: |
     -  ¿Puede perderse la condición de alumno regular?  ¿Cómo se conserva la regularidad?
 
 - synonym: faq_vigencia_cursadas
+  examples: |
     -  ¿Cuál es la vigencia de las cursadas?
 
 - synonym: faq_aplazos_examen
+  examples: |
     -  ¿Cuántos aplazos puedo tener en el examen final de una materia?
 
 - synonym: faq_inscripcion_examen
+  examples: |
     -  ¿Con cuánta anticipación debo inscribirme a un examen final?
 
 - synonym: faq_seguir_cursando
+  examples: |
     -  ¿Tengo que tener aprobado el primer año para seguir cursando?
 
 - synonym: faq_siu_guarani
+  examples: |
     -  ¿Qué es el SIU Guaraní?
