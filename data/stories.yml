@@ -30,3 +30,23 @@ stories:
   steps:
   - intent: pedir_documentos
   - action: action_documentos
+
+- story: pedir web
+  steps:
+  - intent: pedir_web
+  - action: utter_pedir_web
+
+- story: preguntar carreras
+  steps:
+  - intent: preguntar_carreras
+  - action: utter_preguntar_carreras
+
+- story: pedir info carreras
+  steps:
+  - intent: pedir_info_carreras
+  - action: action_info_carreras
+
+- story:
+  steps:
+  - intent: preguntar_talleres
+  - action: utter_preguntar_talleres

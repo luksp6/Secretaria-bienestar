@@ -136,11 +136,11 @@ nlu:
 
 - intent: identificarse
   examples: |
-    - mi nombre es [nombre](nombres)
-    - me llamo [nombre](nombres)
-    - soy [nombre](nombres)
-    - hola, mi nombre es [nombre](nombres)
-    - hola, me llamo [nombre](nombres)
+    - mi nombre es [lucas](nombres)
+    - me llamo [pedro](nombres)
+    - soy [pablo](nombres)
+    - hola, mi nombre es [luis](nombres)
+    - hola, me llamo [antonio](nombres)
 
 - intent: pedir_contacto
   examples: |
@@ -154,10 +154,27 @@ nlu:
     - sitio web
     - pagina oficial
 
+- intent: preguntar_carreras
+  examples: |
+    - que carreras hay en la universidad?
+    - en que carreras me puedo inscribir?
+    - cuales son las carreras de la universidad?
+
+- intent: preguntar_talleres
+  examples: |
+    - que talleres se dictan en la universidad?
+    - cuales son los talleres a los que me puedo inscribir?
+    - cuales son los talleres que se dan en la universidad?
+
 - intent: pedir_documentos
   examples: |
     - donde puedo iniciar el tramite para solicitar mi [certificado](documento)?
     - donde puedo iniciar el tramite par solicitar mi [titulo](documento)?
+
+- intent: pedir_info_carreras
+  examples: |
+    - donde puedo conseguir mas informacion sobre la carrera de [Licenciatura en Logística Integral](carreras)?
+    - me pasarias mas informacion sobre la carrera de [Ingeniería Industrial](carreras)?
 
 #buscar expresiones regulares
 - intent: pedir_informacion
@@ -182,16 +199,16 @@ nlu:
     - sos humano?
     - quien te creo?
 
-- synonym: nombre
-  examples: |
-    - lucas
-    - pablo
-    - luis
-    - analia
-    - emiliano
-    - matias
-    - marcelo
-    - nelson
+#- synonym: nombres
+#  examples: |
+#    - lucas
+#    - pablo
+#    - luis
+#    - analia
+#    - emiliano
+#    - matias
+#    - marcelo
+#    - nelson
 
 - synonym: certificado
   examples: |
@@ -204,13 +221,13 @@ nlu:
     - titulo
     - diploma
 
-- synonym: carreras
-  examples: |
-    - Ingenieria Sistemas
-    - Logistica
-    - tecnicatura en ambiente
-    - Ingenieria civil
-    - Ingenieria Industrial
+#- synonym: carreras
+  #examples: |
+  #  - Ingenieria Sistemas
+  #  - Logistica
+  #  - tecnicatura en ambiente
+  #  - Ingenieria civil
+  #  - Ingenieria Industrial
 
 - synonym: talleres
   examples: |

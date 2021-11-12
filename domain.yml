@@ -9,15 +9,18 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
-  - pedir_contacto
-  - pedir_web
-  - pedir_documentos
+  - pedir_contacto #listo
+  - pedir_web #listo
+  - preguntar_carreras #listo
+  - preguntar_talleres #listo
+  - pedir_documentos #listo
+  - pedir_info_carreras #en proceso
   - pedir_informacion
  #- pedir_becas
  #- pedir_reseva_comedor
 
 entities:
-  - carreras  
+  - carreras
   - documento
   - nombres
   - inf_talleres
@@ -41,9 +44,13 @@ slots:
   nombre:
     type: text
 
+  carrera_interes:
+    type: text
+
 actions:
   - action_documentos
   - action_identificarse
+  - action_info_carreras
 
 responses:
   utter_saludo:
@@ -63,6 +70,12 @@ responses:
 
   utter_pedir_web:
   - text: "El sitio web oficial de nuestra universidad es: http://www.quequen.unicen.edu.ar/"
+
+  utter_preguntar_carreras:
+  - text: "Las carreras de nuestra universidad son:\n\t| Licenciatura en Logística Integral\n\t| Ingeniería Civil\n\t| Ingeniería Electromecánica\n\t| Ingeniería Industrial\n\t| Ingeniería Química\n\t| Ingeniería en Agrimensura"
+
+  utter_preguntar_talleres:
+  - text: "Los talleres que se dictan en nuestra universidad son: \n\t | APRENDER A APRENDER. TÉCNICAS DE ESTUDIO BASADAS EN NEUROAPRENDIZAJE\n\t| CONCRETA TUS OBJETIVOS. CRECIMIENTO PERSONAL\n\t| TALLER DE LENGUA ESPAÑOLA\n\t| TALLER DE “PRODUCCIÓN Y REALIZACIÓN AUDIOVISUAL”\n\t| EDUCACIÓN CANINA INCLUSIVA\n\t| INICIACIÓN AL DIBUJO\n\t| TALLER DE DISEÑO DE INTERIORES\n\t| DERECHO PARA NO ABOGADOS\n\t| ABOGACÍA PREVENTIVA\n\t| HERRAMIENTAS PARA UN NEGOCIO EXITOSO\n\t| GESTIÓN GASTRONÓMICA: ADMINISTRACIÓN Y CONTROL DE COSTOS E INGENIERÍA DE MENÚ\n\t| INTRODUCCIÓN AL CONOCIMIENTO DEL CAFÉ, TÉ, CHOCOLATE Y YERBA MATE\n\t| INTRODUCCIÓN AL CONOCIMIENTO DEL VINO Y MARIDAJE\n\t| TALLER DE LENGUA ITALIANA\n\t| COMUNICACIÓN Y MARKETING DIGITAL PARA EMPRENDEDORES Y CURIOSOS"
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
