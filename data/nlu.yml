@@ -176,6 +176,11 @@ nlu:
     - donde puedo conseguir mas informacion sobre la carrera de [Licenciatura en Logística Integral](carreras)?
     - me pasarias mas informacion sobre la carrera de [Ingeniería Industrial](carreras)?
 
+- intent: pedir_info_talleres
+  examples: |
+    - me darias mas informacion sobre el taller [APRENDER A APRENDER. TÉCNICAS DE ESTUDIO BASADAS EN NEUROAPRENDIZAJE](talleres)?
+    - quisiera saber algo mas sobre el taller [EDUCACIÓN CANINA INCLUSIVA](talleres)
+
 #buscar expresiones regulares
 - intent: pedir_informacion
   examples: |
@@ -221,7 +226,7 @@ nlu:
     - titulo
     - diploma
 
-#- synonym: carreras
+#- synonym: carreras #no va
   #examples: |
   #  - Ingenieria Sistemas
   #  - Logistica
@@ -229,7 +234,7 @@ nlu:
   #  - Ingenieria civil
   #  - Ingenieria Industrial
 
-- synonym: talleres
+- synonym: talleres #no va
   examples: |
     - APRENDER A APRENDER. TÉCNICAS DE ESTUDIO BASADAS EN NEUROAPRENDIZAJE
     - CONCRETA TUS OBJETIVOS. CRECIMIENTO PERSONAL

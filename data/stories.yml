@@ -46,7 +46,12 @@ stories:
   - intent: pedir_info_carreras
   - action: action_info_carreras
 
-- story:
+- story: preguntar talleres
   steps:
   - intent: preguntar_talleres
   - action: utter_preguntar_talleres
+
+- story: pedir info talleres
+  steps:
+  - intent: pedir_info_talleres
+  - action: action_info_talleres

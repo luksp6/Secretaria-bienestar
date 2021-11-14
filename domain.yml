@@ -1,9 +1,9 @@
 version: "2.0"
 
 intents:
-  - identificarse
+  - identificarse #listo
   - greet
-  - goodbye
+  - goodbye #listo
   - affirm
   - deny
   - mood_great
@@ -11,11 +11,12 @@ intents:
   - bot_challenge
   - pedir_contacto #listo
   - pedir_web #listo
+  - pedir_documentos #listo
   - preguntar_carreras #listo
   - preguntar_talleres #listo
-  - pedir_documentos #listo
-  - pedir_info_carreras #en proceso
-  - pedir_informacion
+  - pedir_info_carreras #listo
+  - pedir_info_talleres #listo
+  - pedir_informacion 
  #- pedir_becas
  #- pedir_reseva_comedor
 
@@ -23,6 +24,7 @@ entities:
   - carreras
   - documento
   - nombres
+  - talleres
   - inf_talleres
   - inf_calendario
   - inf_fechas
@@ -44,13 +46,23 @@ slots:
   nombre:
     type: text
 
+  edad:
+    type: any
   carrera_interes:
     type: text
+
+  taller_interes:
+    type: text
+
+  usuarios:
+    type: any
 
 actions:
   - action_documentos
   - action_identificarse
   - action_info_carreras
+  - action_info_talleres
+  - action_cerrar_sesion
 
 responses:
   utter_saludo:

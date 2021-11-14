@@ -2,9 +2,10 @@ version: "2.0"
 
 rules:
 
-- rule: Say goodbye anytime the user says goodbye
+- rule: guardar datos al despedirse
   steps:
   - intent: goodbye
+  - action: action_cerrar_sesion
   - action: utter_goodbye
 
 - rule: Say 'I am a bot' anytime the user challenges

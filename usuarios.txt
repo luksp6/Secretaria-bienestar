@@ -1,0 +1,1 @@
+{'lucas': {'edad': 20, 'carrera_interes': None, 'taller_interes': None}, 'luis': {'edad': None, 'carrera_interes': 'Ingeniería Civil', 'taller_interes': None}}
