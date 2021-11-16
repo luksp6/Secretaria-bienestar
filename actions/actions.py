@@ -30,13 +30,13 @@ class ActionIdentificarse(Action):
     def name(self) -> Text:
         return "action_identificarse"
 
-    #@staticmethod
     def agregarUsuario(self, dict, nuevo):
         datos = {
                     'edad' : None,
                     'carrera_interes' : None,
                     'taller_interes' : None,
-                    'beca_interes' : None
+                    'beca_interes' : None,
+                    'ingresante/reinscripto' : None
                 }
         if dict == None:
             return {nuevo : datos}
@@ -209,3 +209,87 @@ class ActionBeneficioBecas(Action):
                 return []
         else:
             return []
+
+class ActionSetIngReins(Action):
+
+    def name(self) -> Text:
+        return "action_set_ ingresante/reinscripto"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        intent = tracker.latest_message['intent'].get('name')
+        if (intent == "entrevista_soy_ingresante"):
+            return [SlotSet("ingresante/reinscripto", "ingresante")]
+        elif (intent == "entrevista_soy_reinscripto"):
+            return [SlotSet("ingresante/reinscripto", "reinscripto")]
+        else:
+            return []
+
+class ActionSetAnCurs(Action):
+
+    def name(self) -> Text:
+        return "action_set_años_cursados"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        intent = tracker.latest_message['intent'].get('name')
+        if (intent == "entrevista_años_cursados"):
+            anio = next(tracker.get_latest_entity_values("años cursando"), None)
+            anio = anio[0:1]
+            return [SlotSet("años_cursados", float(anio))]
+        else:
+            return []
+
+class ActionSetMatCurs(Action):
+
+    def name(self) -> Text:
+        return "action_set_materias_cursadas"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        intent = tracker.latest_message['intent'].get('name')
+        if (intent == "entrevista_materias_cursadas"):
+            materias = next(tracker.get_latest_entity_values("materias cursadas"), None)
+            return [SlotSet("materias_cursadas", float(materias))]
+        else:
+            return []
+
+class ActionSetMatApr(Action):
+
+    def name(self) -> Text:
+        return "action_set_materias_aprobadas"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        intent = tracker.latest_message['intent'].get('name')
+        if (intent == "entrevista_materias_aprobadas"):
+            aprobadas = next(tracker.get_latest_entity_values("materias aprobadas"), None)
+            if (str(aprobadas) == "todas"):
+                return [SlotSet("materias_aprobadas", tracker.get_slot("materias_cursadas"))]
+            else:
+                return [SlotSet("materias_aprobadas", float(aprobadas))]
+        else:
+            return []
+
+class ActionOpinarMaterias(Action):
+
+    def name (self) -> Text:
+        return "action_opinar_materias_aprobadas"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        intent = tracker.latest_message['intent'].get('name')
+        if (intent == "entrevista_materias_aprobadas" and tracker.get_slot("materias_cursadas") >= 0):
+            if (tracker.get_slot("materias_cursadas") == tracker.get_slot("materias_aprobadas")):
+                coeficiente = 1
+            else:
+                coeficiente = tracker.get_slot("años cursando") / tracker.get_slot("materias_cursadas") - tracker.get_slot("materias_aprobadas")
+            if (coeficiente < 0.25):
+                salida = "Parece que la carrera te está resultando bastante difícil. No sé si sabías, pero se necesita cierta cantidad de materias aprobadas por año para acceder a nuestras becas"
+            elif (coeficiente >= 0.25 and coeficiente < 0.5):
+                salida = "Bueno, la verdad es que deberías elevar tu promedio de materias aprobadas por año, tus números son un poco bajos y eso es un limitante al momento de acceder a nuestras becas"
+            elif (coeficiente >= 0.5 and coeficiente < 0.75):
+                salida = "Estás bien, pero para tener más probabilidades de ser seleccionado para la beca tendrías que meterle un poco más de pilas"
+            elif (coeficiente >= 0.75 and coeficiente < 1):
+                salida = "Bien, tus materias aprobadas por año en relación a las cursadas están dentro de los márgenes de aceptación de nuestras becas"
+            elif (coeficiente == 1):
+                salida = "¡Excelente! Un desempeño tan alto abre más puertas y eleva tus chances de acceder a la beca que desees"
+            else:
+                salida = ""
+            dispatcher.utter_message(text=str(salida))
+        return []

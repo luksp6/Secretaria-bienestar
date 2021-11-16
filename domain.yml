@@ -21,6 +21,12 @@ intents:
   - pedir_beneficios_becas #listo
   - como_inscribirse_beca #listo
   - pedir_entrevista_beca #en proceso
+  - entrevista_soy_ingresante #listo
+  - entrevista_soy_reinscripto #listo
+  - entrevista_carrera_estudiando #listo
+  - entrevista_años_cursados #listo
+  - entrevista_materias_cursadas #listo
+  - entrevista_materias_aprobadas
   - consultar_resultado_beca
   - pedir_informacion 
  #- pedir_becas
@@ -32,22 +38,8 @@ entities:
   - nombres
   - talleres
   - becas
-  - inf_talleres
-  - inf_calendario
-  - inf_fechas
-  - inf_horarios
-  - inf_ingreso
-  - inf_carreras
-  - inf_becas
-  - faq_documentacion_inscripcion
-  - faq_modalidad_cursada
-  - faq_equivalencias 
-  - faq_regularidad
-  - faq_vigencia_cursadas
-  - faq_aplazos_examen
-  - faq_inscripcion_examen
-  - faq_seguir_cursando
-  - faq_siu_guarani
+  - años cursando
+  - materias cursadas
 
 slots:
   nombre:
@@ -64,6 +56,18 @@ slots:
   beca_interes:
     type: text
 
+  ingresante/reinscripto:
+    type: text
+
+  años_cursados:
+    type: float
+
+  materias_cursadas:
+    type: float
+
+  materias_aprobadas:
+    type: float
+
   usuarios:
     type: any
 
@@ -74,6 +78,11 @@ actions:
   - action_info_talleres
   - action_cerrar_sesion
   - action_beneficio_becas
+  - action_set_ ingresante/reinscripto
+  - action_set_años_cursados
+  - action_set_materias_cursadas
+  - action_set_materias_aprobadas
+  - action_opinar_materias_aprobadas
 
 responses:
   utter_saludo:
@@ -107,7 +116,25 @@ responses:
   - text: "Para inscribirte a una beca deberás ingresar a https://becas.unicen.edu.ar/ y completar un formulario con:\n\t| Datos personales generales del solicitante\n\t| Datos académicos del solicitante\n\t| Datos de salud del solicitante\n\t| Datos relacionados con becas y pasantías del solicitante\n\t| Datos económicos del solicitante\n\t| Datos laborales del solicitante\n\t| Datos acerca de la(s) beca(s) solicitada(s)\n\t| Datos del grupo familiar del solicitante\n\t| Observaciones del solicitante\nGran parte de las preguntas del formulario podrán ser respondidas en el momento, pero en algunas de ellas se requerirá que adjuntes cierta documentación, la cual deberás enviar por mail a administracion@quequen.unicen.edu.ar con el asunto [SOLICITUD DE BECA] APELLIDO, Nombre\n¿Te gustaría completar un formulario de inscripción de beca en este momento?"
 
   utter_comencemos:
-  - text: Perfecto {nombre}, comencemos
+  - text: "Perfecto {nombre}, comencemos"
+
+  utter_entrevista_ingresante/reinscripto:
+  - text: "Contame sobre tu situación universitaria, sos alumno ingresante o reinscripto?"
+
+  utter_entrevista_recibis_otra_beca:
+  - text: "Y sos beneficiario de alguna otra beca?"
+
+  utter_entrevista_preguntar_carrera:
+  - text: "Bien, qué carrera estás cursando?"
+
+  utter_entrevista_años_cursados:
+  - text: "Por qué año de la carrera vas?"
+
+  utter_entrevista_materias_cursadas:
+  - text: "Y cuántas materias cursaste?"
+
+  utter_entrevista_materias_aprobadas:
+  - text: "De esas cuantas aprobaste?"
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."

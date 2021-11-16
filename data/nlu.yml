@@ -209,6 +209,44 @@ nlu:
     - quiero ser entrevistado para una beca
     - me inscribi a una beca y me dijeron que me comunique para la entrevista
 
+- intent: entrevista_soy_ingresante
+  examples: |
+    - soy ingresante, es mi primer año
+    - es mi primer año
+    - soy ingresante
+    - es mi primera vez en la universidad
+
+- intent: entrevista_soy_reinscripto
+  examples: |
+    - soy reinscripto, ya estoy en el [3er](años cursando) año
+    - soy reinscripto
+    - ya estudiaba
+
+- intent: entrevista_carrera_estudiando
+  examples: |
+    - estoy estudiando [Licenciatura en Logística Integral](carreras)
+    - estudio [Ingeniería Civil](carreras)
+    - estoy en [Ingeniería de Agrimensura](carreras)
+
+- intent: entrevista_años_cursados
+  examples: |
+    - estoy en el [2do](años cursando) de la carrera
+    - voy por el [4to](años cursando) año
+    - pase al [3er](años cursando) año
+
+
+- intent: entrevista_materias_cursadas
+  examples: |
+    - curse [6](materias cursadas)
+    - curse [20](materias cursadas) materias
+    - hice [10](materias cursadas) materias
+
+- intent: entrevista_materias_aprobadas
+  examples: |
+    - aprobe [6](materias aprobadas)
+    - meti [29](materias aprobadas)
+    - de esas meti [todas](materias aprobadas)
+
 #buscar expresiones regulares
 - intent: pedir_informacion
   examples: |
@@ -232,17 +270,6 @@ nlu:
     - sos humano?
     - quien te creo?
 
-#- synonym: nombres
-#  examples: |
-#    - lucas
-#    - pablo
-#    - luis
-#    - analia
-#    - emiliano
-#    - matias
-#    - marcelo
-#    - nelson
-
 - synonym: certificado
   examples: |
     - certificado de alumno regular
@@ -253,32 +280,6 @@ nlu:
   examples: |
     - titulo
     - diploma
-
-#- synonym: carreras #no va
-  #examples: |
-  #  - Ingenieria Sistemas
-  #  - Logistica
-  #  - tecnicatura en ambiente
-  #  - Ingenieria civil
-  #  - Ingenieria Industrial
-
-- synonym: talleres #no va
-  examples: |
-    - APRENDER A APRENDER. TÉCNICAS DE ESTUDIO BASADAS EN NEUROAPRENDIZAJE
-    - CONCRETA TUS OBJETIVOS. CRECIMIENTO PERSONAL
-    - TALLER DE LENGUA ESPAÑOLA
-    - TALLER DE “PRODUCCIÓN Y REALIZACIÓN AUDIOVISUAL”
-    - EDUCACIÓN CANINA INCLUSIVA
-    - INICIACIÓN AL DIBUJO
-    - TALLER DE DISEÑO DE INTERIORES
-    - DERECHO PARA NO ABOGADOS
-    - ABOGACÍA PREVENTIVA
-    - HERRAMIENTAS PARA UN NEGOCIO EXITOSO
-    - GESTIÓN GASTRONÓMICA ADMINISTRACIÓN Y CONTROL DE COSTOS E INGENIERÍA DE MENÚ
-    - INTRODUCCIÓN AL CONOCIMIENTO DEL CAFÉ, TÉ, CHOCOLATE Y YERBA MATE
-    - INTRODUCCIÓN AL CONOCIMIENTO DEL VINO Y MARIDAJE
-    - TALLER DE LENGUA ITALIANA
-    - COMUNICACIÓN Y MARKETING DIGITAL PARA EMPRENDEDORES Y CURIOSOS
 
 - synonym: calendario
   examples: |

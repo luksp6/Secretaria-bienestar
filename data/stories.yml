@@ -2,91 +2,91 @@ version: "2.0"
 
 stories:
 
-- story: inicio
+- story: inicio #andando
   steps: 
   - intent: greet
   - action: utter_saludo
   - checkpoint: ya pidio nombre
 
-- story: se identifica
+- story: se identifica #andando
   steps:
   - checkpoint: ya pidio nombre
   - checkpoint: no dice nombre
   - intent: identificarse
   - action: action_identificarse
 
-- story: no se identifica
+- story: no se identifica #listo
   steps:
   - checkpoint: no dice nombre
   - action: utter__insistir_identificacion
   - checkpoint: ya pidio nombre
 
-- story: pedir contactos
+- story: pedir contactos #andando
   steps:
   - intent: pedir_contacto
   - action: utter_pedir_contacto
 
-- story: pedir documentos
+- story: pedir documentos #andando
   steps:
   - intent: pedir_documentos
   - action: action_documentos
 
-- story: pedir web
+- story: pedir web #andando
   steps:
   - intent: pedir_web
   - action: utter_pedir_web
 
-- story: preguntar carreras
+- story: preguntar carreras #andando
   steps:
   - intent: preguntar_carreras
   - action: utter_preguntar_carreras
 
-- story: pedir info carreras
+- story: pedir info carreras #andando
   steps:
   - intent: pedir_info_carreras
   - action: action_info_carreras
 
-- story: preguntar talleres
+- story: preguntar talleres #andando
   steps:
   - intent: preguntar_talleres
   - action: utter_preguntar_talleres
 
-- story: pedir info talleres
+- story: pedir info talleres #andando
   steps:
   - intent: pedir_info_talleres
   - action: action_info_talleres
 
-- story: preguntar becas
+- story: preguntar becas #listo
   steps:
   - intent: preguntar_becas
   - action: utter_preguntar_becas
 
-- story: pedir beneficios becas
+- story: pedir beneficios becas #listo
   steps:
   - intent: pedir_beneficios_becas
   - action: action_beneficio_becas
 
-- story: como inscribirse becas
+- story: como inscribirse becas #listo
   steps:
   - intent: como_inscribirse_beca
   - action: utter_como_inscribirse_beca
 
-- story: pedir entrevista beca
+- story: pedir entrevista beca #listo
   steps:
   - intent: pedir_entrevista_beca #pide entrevistare para una beca
   - action: utter_comencemos
   - action: utter_entrevista_ingresante/reinscripto #pregunta si es ingresante o reinscripto
   - checkpoint: pregunto_ingresante_o_inscripto
 
-- story: pedir entrevista beca ingresante
+- story: pedir entrevista beca ingresante #listo
   steps:
   - checkpoint: pregunto_ingresante_o_inscripto
   - intent: entrevista_soy_ingresante #responde que es ingresante
-  - action: action_ingresante/reinscripto #guarda el dato en un slot
+  - action: action_set_ ingresante/reinscripto #guarda el dato en un slot
   - action: utter_entrevista_recibis_otra_beca #pregunta si recibe otra beca
   - checkpoint: pregunto_cobra_otra_beca
 
-  - story: pedir entrevista beca reinscripto
+  - story: pedir entrevista beca reinscripto #listo
     steps:
   - checkpoint: pregunto_ingresante_o_inscripto
   - intent: entrevista_soy_reinscripto #responde que es reinscripto
@@ -95,13 +95,13 @@ stories:
   - intent: entrevista_carrera_estudiando #responde carrera que estudia
   - action: utter_entrevista_años_cursados #pregunta años de la carrera cursados
   - intent: entrevista_años_cursados #responde años de la carrera cursados
-  - action: action_años_cursados #guarda el dato en un slot
+  - action: action_set_años_cursados #guarda el dato en un slot
   - action: utter_entrevista_materias_cursadas #pregunta cantidad de materias cursadas
   - intent: entrevista_materias_cursadas #responde cantidad de materias cursadas
-  - action: action_materias_cursadas #guarda el dato en un slot
+  - action: action_set_materias_cursadas #guarda el dato en un slot
   - action: utter_entrevista_materias_aprobadas #pregunta cantidad de materias aprobadas
   - intent: entrevista_materias_aprobadas #responde cantidad de materias aprobadas
-  - action: action_materias_aprobadas #guarda el dato en un slot
+  - action: action_set_materias_aprobadas #guarda el dato en un slot
   - action: action_opinar_materias_aprobadas #opina sobre el solicitante en base a la relacion de años cursados, materias cursadas y materias aprobadas
   - checkpoint: opino_materias_aprobadas
 
