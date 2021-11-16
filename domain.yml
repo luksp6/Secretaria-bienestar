@@ -9,13 +9,19 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
-  - pedir_contacto #listo
-  - pedir_web #listo
-  - pedir_documentos #listo
-  - preguntar_carreras #listo
-  - preguntar_talleres #listo
-  - pedir_info_carreras #listo
-  - pedir_info_talleres #listo
+  - pedir_contacto #andando
+  - pedir_web #andando
+  - pedir_documentos #andando
+  - preguntar_carreras #andando
+  - preguntar_talleres #andando
+  - pedir_info_carreras #andando
+  - pedir_info_talleres #andando
+  - preguntar_becas #listo
+  - pedir_requisitos_becas #listo
+  - pedir_beneficios_becas #listo
+  - como_inscribirse_beca #listo
+  - pedir_entrevista_beca #en proceso
+  - consultar_resultado_beca
   - pedir_informacion 
  #- pedir_becas
  #- pedir_reseva_comedor
@@ -25,6 +31,7 @@ entities:
   - documento
   - nombres
   - talleres
+  - becas
   - inf_talleres
   - inf_calendario
   - inf_fechas
@@ -54,6 +61,9 @@ slots:
   taller_interes:
     type: text
 
+  beca_interes:
+    type: text
+
   usuarios:
     type: any
 
@@ -63,6 +73,7 @@ actions:
   - action_info_carreras
   - action_info_talleres
   - action_cerrar_sesion
+  - action_beneficio_becas
 
 responses:
   utter_saludo:
@@ -88,6 +99,15 @@ responses:
 
   utter_preguntar_talleres:
   - text: "Los talleres que se dictan en nuestra universidad son: \n\t | APRENDER A APRENDER. TÉCNICAS DE ESTUDIO BASADAS EN NEUROAPRENDIZAJE\n\t| CONCRETA TUS OBJETIVOS. CRECIMIENTO PERSONAL\n\t| TALLER DE LENGUA ESPAÑOLA\n\t| TALLER DE “PRODUCCIÓN Y REALIZACIÓN AUDIOVISUAL”\n\t| EDUCACIÓN CANINA INCLUSIVA\n\t| INICIACIÓN AL DIBUJO\n\t| TALLER DE DISEÑO DE INTERIORES\n\t| DERECHO PARA NO ABOGADOS\n\t| ABOGACÍA PREVENTIVA\n\t| HERRAMIENTAS PARA UN NEGOCIO EXITOSO\n\t| GESTIÓN GASTRONÓMICA: ADMINISTRACIÓN Y CONTROL DE COSTOS E INGENIERÍA DE MENÚ\n\t| INTRODUCCIÓN AL CONOCIMIENTO DEL CAFÉ, TÉ, CHOCOLATE Y YERBA MATE\n\t| INTRODUCCIÓN AL CONOCIMIENTO DEL VINO Y MARIDAJE\n\t| TALLER DE LENGUA ITALIANA\n\t| COMUNICACIÓN Y MARKETING DIGITAL PARA EMPRENDEDORES Y CURIOSOS"
+
+  utter_preguntar_becas:
+  - text: "La universidad ofrece el Programa de Becas de la UNICEN, el cual está conformado por las siguientes becas:\n\t| Beca de finalización de carrera\n\t| Beca de ayuda económica\n\t| Beca de 3er beneficio"
+
+  utter_como_inscribirse_beca:
+  - text: "Para inscribirte a una beca deberás ingresar a https://becas.unicen.edu.ar/ y completar un formulario con:\n\t| Datos personales generales del solicitante\n\t| Datos académicos del solicitante\n\t| Datos de salud del solicitante\n\t| Datos relacionados con becas y pasantías del solicitante\n\t| Datos económicos del solicitante\n\t| Datos laborales del solicitante\n\t| Datos acerca de la(s) beca(s) solicitada(s)\n\t| Datos del grupo familiar del solicitante\n\t| Observaciones del solicitante\nGran parte de las preguntas del formulario podrán ser respondidas en el momento, pero en algunas de ellas se requerirá que adjuntes cierta documentación, la cual deberás enviar por mail a administracion@quequen.unicen.edu.ar con el asunto [SOLICITUD DE BECA] APELLIDO, Nombre\n¿Te gustaría completar un formulario de inscripción de beca en este momento?"
+
+  utter_comencemos:
+  - text: Perfecto {nombre}, comencemos
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."

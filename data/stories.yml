@@ -55,3 +55,118 @@ stories:
   steps:
   - intent: pedir_info_talleres
   - action: action_info_talleres
+
+- story: preguntar becas
+  steps:
+  - intent: preguntar_becas
+  - action: utter_preguntar_becas
+
+- story: pedir beneficios becas
+  steps:
+  - intent: pedir_beneficios_becas
+  - action: action_beneficio_becas
+
+- story: como inscribirse becas
+  steps:
+  - intent: como_inscribirse_beca
+  - action: utter_como_inscribirse_beca
+
+- story: pedir entrevista beca
+  steps:
+  - intent: pedir_entrevista_beca
+  - action: utter_comencemos
+  - action: utter_entrevista_ingresante/reinscripto
+  - checkpoint: pregunto_ingresante_o_inscripto
+
+- story: pedir entrevista beca ingresante
+  steps:
+  - checkpoint: pregunto_ingresante_o_inscripto
+  - intent: entrevista_soy_ingresante
+  - action: action_ingresante/reinscripto
+  - action: utter_entrevista_recibis_otra_beca
+  - checkpoint: pregunto_cobra_otra_beca
+
+  - story: pedir entrevista beca reinscripto
+  steps:
+  - checkpoint: pregunto_ingresante_o_inscripto
+  - intent: entrevista_soy_reinscripto
+  - action: action_ingresante/reinscripto
+  - action: utter_entrevista_preguntar_carrera
+  - intent: entrevista_carrera_estudiando
+  - action: utter_entrevista_años_cursados
+  - intent: entrevista_años_cursados
+  - action: utter_entrevista_materias_cursadas
+  - intent: entrevista_materias_cursadas
+  - action: action_materias_cursadas
+  - action: utter_
+  - action: ingresante/reinscripto
+  - action: utter_entrevista_preguntar_carrera
+  - intent: entrevista_carrera_estudiando
+  - action: utter_entrevista_años_cursados
+  - intent: entrevista_años_cursados
+  - action: utter_entrevista_materias_cursadas
+  - intent: entrevista_materias_cursadas
+  - action: action_materias_cursadas
+  - action: utter_entrevista_materias_aprobadas
+  - intent: entrevista_materias_aprobadas
+  - action: action_materias_aprobadas
+  - action: action_opinar_materias_aprobadas
+  - checkpoint: opino_materias_aprobadas
+
+- story: pedir entrevista beca reinscripto (opinion 1 buena respuesta)
+  steps:
+  - checkpoint: opino_materias_aprobadas
+  - intent: mood_great
+  - action: action_mood_great
+  - checkpoint: ya seteo opinion 1
+
+- story: pedir entrevista beca reinscripto (opinion 1 mala respuesta)
+  steps:
+  - checkpoint: opino_materias_aprobadas
+  - intent: mood_unhappy
+  - action: action_mood_unhappy
+  - checkpoint: ya seteo opinion 1
+
+- story: pedir entrevista beca reinscripto (1 opinion)
+  steps:
+  - checkpoint: ya seteo opinion 1
+  - action: utter_entrevista_recibis_otra_beca
+  - checkpoint: pregunto_cobra_otra_beca
+
+- story: pedir entrevista beca SI cobra otra beca
+  steps:
+  - checkpoint: pregunto_cobra_otra_beca
+  - intent: affirm
+  - action: action_cobra_otra_beca
+  - checkpoint: ya respondio si cobra otra beca
+
+- story: pedir entrevista beca NO cobra otra beca
+  steps:
+  - checkpoint: pregunto_cobra_otra_beca
+  - intent: deny
+  - action: action_cobra_otra_beca
+  - checkpoint: ya respondio si cobra otra beca
+
+- story: pedir entrevista beca
+  steps:
+  - checkpoint: ya respondio si cobra otra beca
+  - action: action_opinar_cobra_otra_beca
+  - checkpoint: opino_cobrar_otra_beca
+
+- story: pedir entrevista beca (opinion 2 buena rspuesta)
+  steps:
+  - checkpoint: opino_cobrar_otra_beca
+  - intent: mood_great
+  - action: action_mood_great
+  - checkpoint: ya seteo opinion 2
+
+- story: pedir entrevista beca (opinion 2 mala rspuesta)
+  steps:
+  - checkpoint: opino_cobrar_otra_beca
+  - intent: mood_unhappy
+  - action: action_mood_unhappy
+  - checkpoint: ya seteo opinion 2
+
+- story: pedir entrevista beca (2 opiniones)
+  steps:
+  - checkpoint: ya seteo opinion 2

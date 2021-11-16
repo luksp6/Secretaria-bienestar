@@ -36,6 +36,7 @@ class ActionIdentificarse(Action):
                     'edad' : None,
                     'carrera_interes' : None,
                     'taller_interes' : None,
+                    'beca_interes' : None
                 }
         if dict == None:
             return {nuevo : datos}
@@ -87,6 +88,7 @@ class ActionInfoCarreras(Action):
         intent = tracker.latest_message['intent'].get('name')
         if (intent == "pedir_info_carreras"):
             carrera = next(tracker.get_latest_entity_values("carreras"), None)
+            verif = 0
             salida = "Podrás obtener más información sobre la carrera de " + str(carrera) + " en la siguiente página: "
             if (str(carrera) == "Licenciatura en Logística Integral"):
                 salida = salida + "http://www.quequen.unicen.edu.ar/?page_id=75"
@@ -102,8 +104,12 @@ class ActionInfoCarreras(Action):
                 salida = salida + "http://www.quequen.unicen.edu.ar/?page_id=3906"
             else:
                 salida = "Parece que la carrera " + str(carrera) + " no existe en nuestra universidad. Te recuerdo las carreras con las que contamos:\n\t| Licenciatura en Logística Integral\n\t| Ingeniería Civil\n\t| Ingeniería Electromecánica\n\t| Ingeniería Industrial\n\t| Ingeniería Química\n\t| Ingeniería en Agrimensura"
+                verif = 1
             dispatcher.utter_message(text=str(salida))
-            return [SlotSet("carrera_interes", carrera)]
+            if (verif == 0):
+                return [SlotSet("carrera_interes", carrera)]
+            else:
+                return []
         else:
             return []
 
@@ -116,6 +122,7 @@ class ActionInfoTalleres(Action):
         intent = tracker.latest_message['intent'].get('name')
         if (intent == "pedir_info_talleres"):
             taller = next(tracker.get_latest_entity_values("talleres"), None)
+            verif = 0
             salida = "Como norma general, los talleres se arbrirán si cumnplen con el cupo mínimo de 15 inscriptos.\n Valor de la cuota: $400/mes – Todos los talleres otorgan certificado expedido por la Secretaría de Extensión de la UNICEN"
             if (str(taller) == "APRENDER A APRENDER. TÉCNICAS DE ESTUDIO BASADAS EN NEUROAPRENDIZAJE"):
                 salida = salida + "\n\t| Tallerista: Prof. Sandra Olthoff\n\t| Descripción: Técnicas de estudio basadas en neuroaprendizaje. Proceso de aprendizaje. Captación y selección de información. Codificación de la información. Memorización de contenidos. Sistemas mnemotécnicos.\n\t| Duración: 3 meses\n\t| Día y horario: Lunes de 17.00 a 19.00"
@@ -149,8 +156,12 @@ class ActionInfoTalleres(Action):
                 salida = salida + "\n\t| Tallerista: Lic. Anahí Herrero\n\t| Descripción: Qué se comunica, de qué manera, cada cuánto, qué refleja en sus mensajes. Identificación de fortalezas y debilidades. Reconocimiento de oportunidades y desafíos de la presencia online.\n\t| Duración: 2 meses\n\t| Día y horario: Viernes de 17.30 a 19.00"
             else:
                 salida = "Parece que el taller " + str(taller) + " no esta disponible en nuestra universidad."
+                verif = 1
             dispatcher.utter_message(text=str(salida))
-            return [SlotSet("taller_interes", taller)]
+            if (verif == 0):
+                return [SlotSet("taller_interes", taller)]
+            else:
+                return []
         else:
             return []
 
@@ -167,4 +178,34 @@ class ActionCerrarSesion(Action):
                 if tracker.get_slot(llave) != None:
                     usuarios[tracker.get_slot("nombre")][llave] = tracker.get_slot(llave)
             escribirArchivo(usuarios)
-        return [SlotSet("usuarios", usuarios)]
+            return [SlotSet("usuarios", usuarios)]
+        else:
+            return []
+
+class ActionBeneficioBecas(Action):
+
+    def name(self) -> Text:
+        return "action_beneficio_becas"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        intent = tracker.latest_message['intent'].get('name')
+        if (intent == "pedir_beneficios_becas"):
+            beca = next(tracker.get_latest_entity_values("becas"), None)
+            veirf = 0
+            salida = "Los beneficios de todas nuestras becas siempre serán un monto fijo de dinero, el cual, junto con la duración del beneficio, variarán acorde al tipo de beca y a la condición del postulante, discriminando entre ingresantes y reinscriptos."
+            if (str(beca) == "Beca de finalización de carrera"):
+                salida = salida + "\n\t| Ingresantes: No acceden a esta beca.\n\t| Reinscriptos: $2935 (beneficio durante 10 meses)"
+            elif (str(becas) == "Beca de ayuda económica"):
+                salida = salida + "\n\t| Ingresantes: $810 (beneficio durante 9 meses)\n\t| Reinscriptos: $1515 (beneficio durante 10 meses)"
+            elif (str(becas) == "Beca de 3er beneficio"):
+                salida = salida + "\n\t| Ingresantes: No acceden a esta beca.\n\t| Reinscriptos: $810 (beneficio durante 10 meses)"
+            else:
+                salida = "Parece que esa beca no forma parte de nuestro programa. Te recuerdo que el Programa de Becas de la UNICEN se conforma por las siguientes becas:\n\t| Beca de finalización de carrera\n\t| Beca de ayuda económica\n\t| Beca de 3er beneficio"
+                verif = 1
+            dispatcher.utter_message(text=str(salida))
+            if (verif == 0):
+                return [SlotSet("beca_interes", taller)]
+            else:
+                return []
+        else:
+            return []
