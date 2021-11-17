@@ -108,6 +108,8 @@ nlu:
     - extramadamente bien
     - buen humor
     - feliz
+    - buenisimo
+    - joya
 
 - intent: mood_unhappy
   examples: |
@@ -133,6 +135,7 @@ nlu:
     - muy triste
     - deprimido
     - infeliz
+    - uhh
 
 - intent: identificarse
   examples: |
@@ -160,6 +163,12 @@ nlu:
     - en que carreras me puedo inscribir?
     - cuales son las carreras de la universidad?
 
+- intent: preguntar_materia_carrera
+  examples: |
+    - que materias tiene la carrera [civil](carreras)?
+    - que materias le pertenecen a la carrera [logistica](carreras)?
+    - que plan de estudio tiene la carrera [electromecanica](carreras)?
+
 - intent: preguntar_talleres #hecho story
   examples: |
     - que talleres se dictan en la universidad?
@@ -173,13 +182,13 @@ nlu:
 
 - intent: pedir_info_carreras #hecho story
   examples: |
-    - donde puedo conseguir mas informacion sobre la carrera de [Licenciatura en Logística Integral](carreras)?
-    - me pasarias mas informacion sobre la carrera de [Ingeniería Industrial](carreras)?
+    - donde puedo conseguir mas informacion sobre la carrera de [logistica](carreras)?
+    - me pasarias mas informacion sobre la carrera de [industrial](carreras)?
 
 - intent: pedir_info_talleres #hecho story
   examples: |
-    - me darias mas informacion sobre el taller [APRENDER A APRENDER. TÉCNICAS DE ESTUDIO BASADAS EN NEUROAPRENDIZAJE](talleres)?
-    - quisiera saber algo mas sobre el taller [EDUCACIÓN CANINA INCLUSIVA](talleres)
+    - me darias mas informacion sobre el taller [neuroaprendizaje](talleres)?
+    - quisiera saber algo mas sobre el taller [canina](talleres)
 
 - intent: preguntar_becas #hecho story
   examples: |
@@ -193,9 +202,9 @@ nlu:
 
 - intent: pedir_beneficios_becas #hecho story
   examples: |
-    - que beneficios ofrece la beca [finalizacion de carrera](becas)?
-    - cuales son los beneficios de la beca de [ayudas economicas](becas)?
-    - que beneficios me da la beca [3er beneficio](becas)?
+    - que beneficios ofrece la beca [finalizacion](becas)?
+    - cuales son los beneficios de la beca de [ayuda](becas)?
+    - que beneficios me da la beca [transporte](becas)?
 
 - intent: como_inscribirse_beca #hecho story
   examples: |
@@ -209,6 +218,11 @@ nlu:
     - quiero ser entrevistado para una beca
     - me inscribi a una beca y me dijeron que me comunique para la entrevista
 
+- intent: entrevista_tipo_beca
+  examples: |
+    - solicite la beca [finalizacion](becas)
+    - aplico para la beca [ayuda](becas)
+
 - intent: entrevista_soy_ingresante #hecho story
   examples: |
     - soy ingresante, es mi primer año
@@ -218,21 +232,21 @@ nlu:
 
 - intent: entrevista_soy_reinscripto #hecho story
   examples: |
-    - soy reinscripto, ya estoy en el [3er](años cursando) año
+    - soy reinscripto, ya estoy en el [3](años cursando)er año
     - soy reinscripto
     - ya estudiaba
 
 - intent: entrevista_carrera_estudiando #hecho story
   examples: |
-    - estoy estudiando [Licenciatura en Logística Integral](carreras)
-    - estudio [Ingeniería Civil](carreras)
-    - estoy en [Ingeniería de Agrimensura](carreras)
+    - estoy estudiando [logistica](carreras)
+    - estudio [civil](carreras)
+    - estoy en [agrimensura](carreras)
 
 - intent: entrevista_años_cursados #hecho story
   examples: |
-    - estoy en el [2do](años cursando) de la carrera
-    - voy por el [4to](años cursando) año
-    - pase al [3er](años cursando) año
+    - estoy en el [2](años cursando)do de la carrera
+    - voy por el [4](años cursando)to año
+    - pase al [3](años cursando)er año
 
 - intent: entrevista_materias_cursadas #hecho story
   examples: |
@@ -246,12 +260,12 @@ nlu:
     - meti [29](materias aprobadas)
     - de esas meti [todas](materias aprobadas)
 
-#- intent: pedir_informacion #falta story
-#  examples: |
-#    - me podrías dar informacion sobre el [calendario](inf_general)?
-#    - ¿cómo es el [calendario](inf_general) de este año?
-#    - cuales son las [fechas](inf_general)?
-#    - ¿cuáles son los [horarios](inf_general) de este año?
+- intent: pedir_informacion #falta story
+  examples: |
+    - me podrías dar informacion sobre el [calendario](inf_general)?
+    - ¿cómo es el [calendario](inf_general) de este año?
+    - cuales son las [fechas](inf_general)?
+    - ¿cuáles son los [horarios](inf_general) de este año?
 
 - intent: entrevista_cantidad_familia #hecha story
   examples: |
@@ -269,14 +283,24 @@ nlu:
 
 - intent: entrevista_ingresos_familiares #hecha story
   examples: |
-    - Nuestros ingresos rondan en lo [65000](ingreso familiar)
-    - Aproximadamente [85000](ingreso familiar)
-    - ingresos fijos de [76500](ingreso familiar)
+    - Nuestros ingresos rondan en los $[65000](ingreso familiar)
+    - Aproximadamente $[85000](ingreso familiar)
+    - ingresos fijos de $[76500](ingreso familiar)
 
 - intent: entrevista_gastos_familiares #hecha story
   examples: |
-    - Se gastaran unos [57000](gasto familiar) no estoy muy seguro la verdad
-    - Y, ponele que unos [70000](gasto familiar)
+    - Se gastaran unos $[57000](gasto familiar) no estoy muy seguro la verdad
+    - Y, ponele que unos $[70000](gasto familiar)
+
+- intent: entrevista_distancia_universidad
+  examples: |
+    - Vivimos a [1500](distancia universidad) metros calculo
+    - Vivo a [17000](distancia universidad) metros de la uni
+
+- intent: entrevista_cantidad_auto
+  examples: |
+    - si, tenemos [2](cantidad vehiculos)
+    - si, tenemos [1](cantidad vehiculos)
 
 - intent: bot_challenge
   examples: |
@@ -326,45 +350,177 @@ nlu:
     - ingresar a la facultad
     - ingreso a la facultad
 
-- synonym: becas
+- synonym: finalizacion
   examples: |
-    - becas
-    - beca
+    - beca de finalizacion de carrera
+    - beca de finalizacion
+    - finalizacion de carrera
+
+- synonym: ayuda
+  examples: |
+    - beca de ayuda economica
+    - beca de ayuda
+    - ayuda economica
+
+- synonym: transporte
+  examples: |
+    - beca de transporte publico
+    - beca de transporte
+    - transporte publico
+
+- synonym: logistica
+  examples: |
+    - licenciatura en logistica integral
+    - licenciatura en logistica
+    - logistica integral
+
+- synonym: civil
+  examples: |
+    - ingenieria civil
+
+- synonym: electromecanica
+  examples: |
+    - ingenieria electromecanica
+
+- synonym: industrial
+  examples: |
+    - ingenieria industrial
+
+- synonym: quimica
+  examples: |
+    - ingenieria quimica
+
+- synonym: agrimensura
+  examples: |
+    - ingenieria en agrimensura
+    - ingenieria de agrimensura
+
+- synonym: neuroaprendizaje
+  examples: |
+    - APRENDER A APRENDER. TÉCNICAS DE ESTUDIO BASADAS EN NEUROAPRENDIZAJE
+    - aprender a aprender
+
+- synonym: crecimiento
+  examples: |
+    - CONCRETA TUS OBJETIVOS. CRECIMIENTO PERSONAL
+    - concreta tus objetivos
+    - crecimiento personal
+
+- synonym: español
+  examples: |
+    - TALLER DE LENGUA ESPAÑOLA
+    - lengua española
+
+- synonym: audiovisual
+  examples: |
+    - TALLER DE “PRODUCCIÓN Y REALIZACIÓN AUDIOVISUAL”
+    - produccion audiovisual
+    - realizacion audiovisual
+    - produccion y realizacion audiovisual
+
+- synonym: canina
+  examples: |
+    - EDUCACIÓN CANINA INCLUSIVA
+    - educacion canina
+    - educacion inclusiva
+
+- synonym: dibujo
+  examples: |
+    - INICIACIÓN AL DIBUJO
+    - dibujo
+    - iniciacion al dibujo
+    - dibujar
+
+- synonym: interiores
+  examples: |
+    - TALLER DE DISEÑO DE INTERIORES
+    - diseño de interiores
+    - diseño
+
+- synonym: derecho
+  examples: |
+    - DERECHO PARA NO ABOGADOS
+    - derecho
+    - no abogados
+
+- synonym: preventiva
+  examples: |
+    - ABOGACÍA PREVENTIVA
+    - abogacia
+    - preventiva
+
+- synonym: negocio
+  examples: |
+    - HERRAMIENTAS PARA UN NEGOCIO EXITOSO
+    - negocio exitoso
+    - herramientas para un negocio
+    - herramientas exito
+
+- synonym: gestion
+  examples: |
+    - GESTIÓN GASTRONÓMICA ADMINISTRACIÓN Y CONTROL DE COSTOS E INGENIERÍA DE MENÚ
+    - gestion gastronomica
+    - administracion y control de costos
+    - ingenieria de menu
+
+- synonym: cafe
+  examples: |
+    - INTRODUCCIÓN AL CONOCIMIENTO DEL CAFÉ, TÉ, CHOCOLATE Y YERBA MATE
+    - introduccion al cafe
+    - introduccion al te
+    - introduccion al mate
+
+- synonym: vino
+  examples: |
+    - INTRODUCCIÓN AL CONOCIMIENTO DEL VINO Y MARIDAJE
+    - introduccion al vino
+    - introduccion al maridaje
+
+- synonym: italiano
+  examples: |
+    - TALLER DE LENGUA ITALIANA
+    - lengua italiana
+
+- synonym: marketing
+  examples: |
+    - COMUNICACIÓN Y MARKETING DIGITAL PARA EMPRENDEDORES Y CURIOSOS
+    - comunicacion y marketing
+    - emprendedores y curiosos
 
 #ver cuando hagamos lo de preguntas frecuentes
 
-- synonym: faq_documentacion_inscripcion
-  examples: |
-    - ¿Qué documentación tengo que presentar para inscribirme en las carreras que se dictan en la Unidad Académica?
+#- synonym: faq_documentacion_inscripcion
+#  examples: |
+#    - ¿Qué documentación tengo que presentar para inscribirme en las carreras que se dictan en la Unidad Académica?
 
-- synonym: faq_modalidad_cursada
-  examples: |
-    -  ¿Las cursadas son a distancia o presenciales?
+#- synonym: faq_modalidad_cursada
+#  examples: |
+#   -  ¿Las cursadas son a distancia o presenciales?
 
-- synonym: faq_equivalencias
-  examples: |
-    -  ¿Cómo puedo pedir equivalencia de asignaturas de otras carreras? (de esta universidad o de otras instituciones)
+#- synonym: faq_equivalencias
+#  examples: |
+#    -  ¿Cómo puedo pedir equivalencia de asignaturas de otras carreras? (de esta universidad o de otras instituciones)
 
-- synonym: faq_regularidad
-  examples: |
-    -  ¿Puede perderse la condición de alumno regular?  ¿Cómo se conserva la regularidad?
+#- synonym: faq_regularidad
+#  examples: |
+#    -  ¿Puede perderse la condición de alumno regular?  ¿Cómo se conserva la regularidad?
 
-- synonym: faq_vigencia_cursadas
-  examples: |
-    -  ¿Cuál es la vigencia de las cursadas?
+#- synonym: faq_vigencia_cursadas
+#  examples: |
+#    -  ¿Cuál es la vigencia de las cursadas?
 
-- synonym: faq_aplazos_examen
-  examples: |
-    -  ¿Cuántos aplazos puedo tener en el examen final de una materia?
+#- synonym: faq_aplazos_examen
+#  examples: |
+#    -  ¿Cuántos aplazos puedo tener en el examen final de una materia?
 
-- synonym: faq_inscripcion_examen
-  examples: |
-    -  ¿Con cuánta anticipación debo inscribirme a un examen final?
+#- synonym: faq_inscripcion_examen
+#  examples: |
+#    -  ¿Con cuánta anticipación debo inscribirme a un examen final?
 
-- synonym: faq_seguir_cursando
-  examples: |
-    -  ¿Tengo que tener aprobado el primer año para seguir cursando?
+#- synonym: faq_seguir_cursando
+#  examples: |
+#    -  ¿Tengo que tener aprobado el primer año para seguir cursando?
 
-- synonym: faq_siu_guarani
-  examples: |
-    -  ¿Qué es el SIU Guaraní?
+#- synonym: faq_siu_guarani
+#  examples: |
+#    -  ¿Qué es el SIU Guaraní?

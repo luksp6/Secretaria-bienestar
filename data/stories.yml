@@ -46,6 +46,11 @@ stories:
   - intent: preguntar_carreras
   - action: utter_preguntar_carreras
 
+- story: preguntar materias de una carrera
+  steps:
+  - intent: preguntar_materia_carrera
+  - action: action_materias_carreras
+
 - story: pedir info carreras #andando
   steps:
   - intent: pedir_info_carreras
@@ -85,18 +90,25 @@ stories:
   steps:
   - intent: pedir_entrevista_beca #pide entrevistare para una beca
   - action: utter_comencemos
+  - action: utter_que_beca #pregunta para que beca aplica
+  - intent: entrevista_tipo_beca #responde para que beca aplica
+  - action: action_set_beca_aplica #guarda el dato en un slot
   - action: utter_entrevista_ingresante/reinscripto #pregunta si es ingresante o reinscripto
   - checkpoint: pregunto_ingresante_o_inscripto
 
-- story: pedir entrevista beca ingresante #listo
+- story: entrevista beca (es ingresante) #listo
   steps:
   - checkpoint: pregunto_ingresante_o_inscripto
   - intent: entrevista_soy_ingresante #responde que es ingresante
-  - action: action_set_ ingresante/reinscripto #guarda el dato en un slot
+  - action: action_set_ingresante/reinscripto #guarda el dato en un slot
   - action: utter_entrevista_recibis_otra_beca #pregunta si recibe otra beca
-  - checkpoint: pregunto_cobra_otra_beca
+  - or:
+    - intent: affirm #responde que si cobra otr beca
+    - intent: deny #responde que no cobra otra beca
+  - action: action_set_cobra_otra_beca #guarda el dato en un slot
+  - checkpoint: ya respondio si cobra otra beca
 
-  - story: pedir entrevista beca reinscripto #listo
+  - story: entrevista beca (es reinscripto) #listo
     steps:
   - checkpoint: pregunto_ingresante_o_inscripto
   - intent: entrevista_soy_reinscripto #responde que es reinscripto
@@ -113,63 +125,33 @@ stories:
   - intent: entrevista_materias_aprobadas #responde cantidad de materias aprobadas
   - action: action_set_materias_aprobadas #guarda el dato en un slot
   - action: action_opinar_materias_aprobadas #opina sobre el solicitante en base a la relacion de a�os cursados, materias cursadas y materias aprobadas
-  - checkpoint: opino_materias_aprobadas
-
-- story: pedir entrevista beca reinscripto (opinion 1 buena respuesta) #listo
-  steps:
-  - checkpoint: opino_materias_aprobadas
-  - intent: mood_great #responde de forma afirmativa, sigue entusiasmado
+  - or:
+    - intent: mood_great #responde de forma afirmativa, sigue entusiasmado
+    - intent: mood_unhappy #responde de forma negativa, cabizbajo
   - action: action_set_mood #se guarda en slot de tipo lista que la respuesta a la opinion 1 fue favorable
   - checkpoint: ya seteo opinion 1
 
-- story: pedir entrevista beca reinscripto (opinion 1 mala respuesta) #listo
-  steps:
-  - checkpoint: opino_materias_aprobadas
-  - intent: mood_unhappy #responde de forma negativa, cabizbajo
-  - action: action_set_mood #se guarda en slot de tipo lista que la respuesta a la opinion 1 fue desfavorable
-  - checkpoint: ya seteo opinion 1
-
-- story: pedir entrevista beca reinscripto (1 opinion) #listo
+- story: entrevista beca (1 opinion) #listo
   steps:
   - checkpoint: ya seteo opinion 1
   - action: action_entrevista_recibis_otra_beca #pregunta si recibe otra beca
-  - checkpoint: pregunto_cobra_otra_beca
-
-- story: pedir entrevista beca SI cobra otra beca #listo
-  steps:
-  - checkpoint: pregunto_cobra_otra_beca 
-  - intent: affirm #responde que si cobra otr beca
+  - or:
+    - intent: affirm #responde que si cobra otr beca
+    - intent: deny #responde que no cobra otra beca
   - action: action_set_cobra_otra_beca #guarda el dato en un slot
   - checkpoint: ya respondio si cobra otra beca
 
-- story: pedir entrevista beca NO cobra otra beca #listo
-  steps:
-  - checkpoint: pregunto_cobra_otra_beca
-  - intent: deny #responde que no cobra otra beca
-  - action: action_set_cobra_otra_beca #guarda el dato en un slot
-  - checkpoint: ya respondio si cobra otra beca
-
-- story: pedir entrevista beca #listo
+- story: entrevista beca (1 opinion) 1 #listo
   steps:
   - checkpoint: ya respondio si cobra otra beca
   - action: action_opinar_cobra_otra_beca #opina een base a si cobra o no cobra otra beca
-  - checkpoint: opino_cobrar_otra_beca
-
-- story: pedir entrevista beca (opinion 2 buena rspuesta) #listo
-  steps:
-  - checkpoint: opino_cobrar_otra_beca
-  - intent: mood_great #responde de forma afirmativa, sigue entusiasmado
+  - or:
+    - intent: mood_great #responde de forma afirmativa, sigue entusiasmado
+    - intent: mood_unhappy #responde de forma negativa, cabizbajo
   - action: action_set_mood #se guarda en slot de tipo lista que la respuesta a la opinion 2 fue favorable
   - checkpoint: ya seteo opinion 2
 
-- story: pedir entrevista beca (opinion 2 mala rspuesta) #listo
-  steps:
-  - checkpoint: opino_cobrar_otra_beca
-  - intent: mood_unhappy #responde de forma negativa, cabizbajo
-  - action: action_set_mood #se guarda en slot de tipo lista que la respuesta a la opinion 2 fue desfavorable
-  - checkpoint: ya seteo opinion 2
-
-- story: pedir entrevista beca (2 opiniones)
+- story: entrevista beca (2 opiniones) #listo
   steps:
   - checkpoint: ya seteo opinion 2
   - action: action_cantidad_grupo_familiar #pregunta por cantidad de miembros del grupo familiar. la pregunta se articula segun el mood registrado por las anteriores opiniones
@@ -179,23 +161,13 @@ stories:
   - intent: entrevista_cantidad_trabajan #responde cuantos miembros de la familia trabajan
   - action: action_set_cantidad_trabajan #guarda el dato en un slot
   - action: action_opinar_trabajo_familia #opina sobre el solicitante en relacion a la cantidad de miembros de la familia y la cantidad de ellos que tiene trabajo
-  - checkpoint: ya opino trabajo familia
-
-- story: pedir entrevista beca (opinion 3 buena respuesta)
-  steps:
-  - checkpoint: ya opino trabajo familia
-  - intent: mood_great #responde de forma afirmativa, sigue entusiasmado
-  - action: action_mood_great #se guarda en slot de tipo lista que la respuesta a la opinion 3 fue favorable
+  - or:
+    - intent: mood_great #responde de forma afirmativa, sigue entusiasmado
+    - intent: mood_unhappy #responde de forma negativa, cabizbajo
+  - action: action_set_mood #se guarda en slot de tipo lista que la respuesta a la opinion 2 fue favorable
   - checkpoint: ya seteo opinion 3
 
-- story: pedir entrevista beca (opinion 3 mala respuesta)
-  steps:
-  - checkpoint: ya opino trabajo familia
-  - intent: mood_unhappy #responde de forma negativa, cabizbajo
-  - action: action_mood_unhappy #se guarda en slot de tipo lista que la respuesta a la opinion 3 fue desfavorable
-  - checkpoint: ya seteo opinion 3
-
-- story: pedir entrevista beca (3 opiniones)
+- story: entrevista beca (3 opiniones) #listo
   steps:
   - checkpoint: ya seteo opinion 3
   - action: action_ingresos_familiares #pregunta de cuanto son los ingresos familiares
@@ -205,42 +177,36 @@ stories:
   - intent: entrevista_gastos_familiares #respobde de cuanto son los gastos familiares
   - action: action_set_gastos #guarda el dato en un slot
   - action: action_opinar_economia_familia #opina segun la relacion gastos/ingresos
-  - checkpoint: ya opino economia familia
-
-- story: pedir entrevista beca (opinion 4 buena respuesta)
-  steps:
-  - checkpoint: ya opino economia familiar
-  - intent: mood_great #responde de forma afirmativa, sigue entusiasmado
-  - action: action_mood_great #se guarda en slot de tipo lista que la respuesta a la opinion 4 fue favorable
+  - or:
+    - intent: mood_great #responde de forma afirmativa, sigue entusiasmado
+    - intent: mood_unhappy #responde de forma negativa, cabizbajo
+  - action: action_set_mood #se guarda en slot de tipo lista que la respuesta a la opinion 2 fue favorable
   - checkpoint: ya seteo opinion 4
 
-- story: pedir entrevista beca (opinion 4 mala respuesta)
-  steps:
-  - checkpoint: ya opino economia familiar
-  - intent: mood_unhappy #responde de forma negativa, cabizbajo
-  - action: action_mood_unhappy #se guarda en slot de tipo lista que la respuesta a la opinion 4 fue desfavorable
-  - checkpoint: ya seteo opinion 4
-
-- story: pedir entrevista beca (4 opiniones)
+- story: entrevista beca (4 opiniones) 
   steps:
   - checkpoint: ya seteo opinion 4
-  - action: action_familiares_enfermos #pregunta si tiene familiares enfermos
-  - checkpoint: pregunta familiares enfermos
-
-- story: pedir entrevista beca (SI familiares enfermos)
-  steps:
-  - checkpoint: pregunta familiares enfermos
-  - intent: affirm #responde que si tiene familiares enfermos
-  - action: action_set_familiares_enfermos #guarda el dato en un slot
-  - checkpoint: ya respondio familiares enfermos
-
-- story: pedir entrevista beca (NO familiares enfermos)
-  steps:
-  - checkpoint: pregunta familiares enfermos
-  - intent: deny #responde que no tiene familiares enfermos
+  - action: utter_distancia_universidad #pregunta si viven lejos de la universidad
+  - intent: entrevista_distancia_universidad #responde si viven lejos de la universidad
+  - action: action_set_distancia_universidad #guarda el dato en un slot
+  - action: utter_tienen_auto
+  - or:
+    - intent: deny
+    - intent: entrevista_cantidad_auto
+  - action: action_set_tienen_auto
+  - action: utter_familiares_enfermos #pregunta si tiene familiares enfermos
+  - or:
+    - intent: affirm #responde que si tiene familiares enfermos
+    - intent: deny #responde que no tiene familiares enfermos
   - action: action_set_familiares_enfermos #guada el dato en un slot
   - checkpoint: ya respondio familiares enfermos
 
 - story: finalizar entrevista
-- checkpoint: ya respondio familiares enfermos
-- action: action_finalizar_entrevista #finaliza la entrevista, se le informa que se evaluara su aplicacion y que puede consultar por el resultado en otro momento. evaluar todo y guardar respuesta
+  steps:
+  - checkpoint: ya respondio familiares enfermos
+  - action: action_finalizar_entrevista #finaliza la entrevista, se le informa que se evaluara su aplicacion y que puede consultar por el resultado en otro momento. evaluar todo y guardar respuesta
+
+- story: consultar resultado beca
+  steps:
+  - intent: consultar_resultado_beca
+  - action: action_get_resultado_beca

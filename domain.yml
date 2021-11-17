@@ -13,6 +13,7 @@ intents:
   - pedir_web #andando
   - pedir_documentos #andando
   - preguntar_carreras #andando
+  - preguntar_materia_carrera
   - preguntar_talleres #andando
   - pedir_info_carreras #andando
   - pedir_info_talleres #andando
@@ -20,25 +21,29 @@ intents:
   - pedir_requisitos_becas #listo
   - pedir_beneficios_becas #listo
   - como_inscribirse_beca #listo
-  - pedir_entrevista_beca #en proceso
+  - pedir_entrevista_beca #listo
+  - entrevista_tipo_beca #en proceso
   - entrevista_soy_ingresante #listo
   - entrevista_soy_reinscripto #listo
   - entrevista_carrera_estudiando #listo
   - entrevista_años_cursados #listo
   - entrevista_materias_cursadas #listo
-  - entrevista_materias_aprobadas
-  - consultar_resultado_beca
+  - entrevista_materias_aprobadas #listo
+  - consultar_resultado_beca #listo
   - pedir_informacion 
-  - entrevista_cantidad_familia
-  - entrevista_cantidad_trabajan
-  - entrevista_ingresos_familiares
-  - entrevista_gastos_familiares
+  - entrevista_cantidad_familia #listo
+  - entrevista_cantidad_trabajan #listo
+  - entrevista_ingresos_familiares #listo
+  - entrevista_gastos_familiares #listo
+  - entrevista_distancia_universidad #listo
+  - entrevista_cantidad_auto #listo
  
 
 entities:
   - carreras
   - documento
   - nombres
+  - materia
   - talleres
   - becas
   - inf_general
@@ -48,6 +53,7 @@ entities:
   - familia trabajadora
   - ingreso familiar
   - gasto familiar
+  - distancia universidad
 
 slots:
   nombre:
@@ -55,6 +61,7 @@ slots:
 
   edad:
     type: any
+
   carrera_interes:
     type: text
 
@@ -62,6 +69,9 @@ slots:
     type: text
 
   beca_interes:
+    type: text
+
+  beca_aplica:
     type: text
 
   ingresante/reinscripto:
@@ -88,18 +98,37 @@ slots:
   familia_trabajadora:
     type: float
 
+  ingreso_familiar:
+    type: float
+
+  gasto_familiar:
+    type: float
+
+  distancia universidad:
+    type: float
+
+  cantidad vehiculos:
+    type: float
+
+  familiares_enfermos:
+    type: boolean
+
+  entrevista_terminada:
+    type: boolean
+
   usuarios:
     type: any
 
 actions:
   - action_documentos
+  - action_materias_carreras  
   - action_identificarse
   - action_informacion
   - action_info_carreras
   - action_info_talleres
   - action_cerrar_sesion
   - action_beneficio_becas
-  - action_set_ ingresante/reinscripto
+  - action_set_ingresante/reinscripto
   - action_set_años_cursados
   - action_set_materias_cursadas
   - action_set_materias_aprobadas
@@ -111,6 +140,15 @@ actions:
   - action_cantidad_grupo_familiar
   - action_set_cantidad_familia
   - action_set_cantidad_trabajan
+  - action_opinar_trabajo_familia
+  - action_ingresos_familiares
+  - action_set_ingresos
+  - action_gastos_familiares
+  - action_opinar_economia_familia
+  - action_set_familiares_enfermos
+  - action_finalizar_entrevista
+  - action_get_resultado_beca
+  - action_set_tienen_auto
 
 responses:
   utter_saludo:
@@ -149,6 +187,9 @@ responses:
   utter_comencemos:
   - text: "Perfecto {nombre}, comencemos"
 
+  utter_que_beca:
+  - text: "Para que beca estas aplicando?"
+
   utter_entrevista_ingresante/reinscripto:
   - text: "Contame sobre tu situación universitaria, sos alumno ingresante o reinscripto?"
 
@@ -169,6 +210,15 @@ responses:
 
   utter_cuantos_trabajan:
   - text: "Y cuantos de ellos trabajan?"
+
+  utter_distancia_universidad:
+  - text: "A cuantos metros de la universidad vivis vos y/o tu familia?"
+
+  utter_tienen_auto:
+  - text: "Y vos o tu familia tiene algún vehículo para desplazarse? Cuantos?"
+
+  utter_familiares_enfermos:
+  - text: "Hay familiares con enfermedades crónicas o graves en tu familia?"
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
