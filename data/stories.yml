@@ -73,7 +73,7 @@ stories:
 
 - story: requisitos becas #listo
   steps:
-  - intent: pedir_requsitos_becas
+  - intent: pedir_requisitos_becas
   - action: utter_requisitos_becas
 
 - story: pedir beneficios becas #listo
@@ -108,26 +108,26 @@ stories:
   - action: action_set_cobra_otra_beca #guarda el dato en un slot
   - checkpoint: ya respondio si cobra otra beca
 
-  - story: entrevista beca (es reinscripto) #listo
-    steps:
+- story: entrevista beca (es reinscripto) #listo
+  steps:
   - checkpoint: pregunto_ingresante_o_inscripto
   - intent: entrevista_soy_reinscripto #responde que es reinscripto
   - action: action_ingresante/reinscripto #guarda el dato en un slot
   - action: utter_entrevista_preguntar_carrera #pregunta que carrera estudia
   - intent: entrevista_carrera_estudiando #responde carrera que estudia
-  - action: utter_entrevista_a�os_cursados #pregunta a�os de la carrera cursados
-  - intent: entrevista_a�os_cursados #responde a�os de la carrera cursados
-  - action: action_set_a�os_cursados #guarda el dato en un slot
+  - action: utter_entrevista_anios_cursados #pregunta anios de la carrera cursados
+  - intent: entrevista_anios_cursados #responde anios de la carrera cursados
+  - action: action_set_anios_cursados #guarda el dato en un slot
   - action: utter_entrevista_materias_cursadas #pregunta cantidad de materias cursadas
   - intent: entrevista_materias_cursadas #responde cantidad de materias cursadas
   - action: action_set_materias_cursadas #guarda el dato en un slot
   - action: utter_entrevista_materias_aprobadas #pregunta cantidad de materias aprobadas
   - intent: entrevista_materias_aprobadas #responde cantidad de materias aprobadas
   - action: action_set_materias_aprobadas #guarda el dato en un slot
-  - action: action_opinar_materias_aprobadas #opina sobre el solicitante en base a la relacion de a�os cursados, materias cursadas y materias aprobadas
+  - action: action_opinar_materias_aprobadas #opina sobre el solicitante en base a la relacion de anios cursados, materias cursadas y materias aprobadas
   - or:
-    - intent: mood_great #responde de forma afirmativa, sigue entusiasmado
-    - intent: mood_unhappy #responde de forma negativa, cabizbajo
+  - intent: mood_great #responde de forma afirmativa, sigue entusiasmado
+  - intent: mood_unhappy #responde de forma negativa, cabizbajo
   - action: action_set_mood #se guarda en slot de tipo lista que la respuesta a la opinion 1 fue favorable
   - checkpoint: ya seteo opinion 1
 

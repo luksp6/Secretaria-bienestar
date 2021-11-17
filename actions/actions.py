@@ -36,8 +36,21 @@ class ActionIdentificarse(Action):
                     'carrera_interes' : None,
                     'taller_interes' : None,
                     'beca_interes' : None,
+                    'beca_aplica' : None,
                     'ingresante/reinscripto' : None,
-                    'mood' : []
+                    'anios_cursados' : 0,
+                    'materias_cursadas' : None,
+                    'materias_aprobadas' : None,
+                    'mood' : [],
+                    'otra_beca' : bool,
+                    'cantidad_familia' : 0,
+                    'familia_trabajadora' : 0,
+                    'ingreso_familiar' : 0,
+                    'gasto_familiar' : 0,
+                    'distancia_universidad' : 0,
+                    'cantidad_vehiculos' : 0,
+                    'familiares_enfermos' : bool,
+                    'entrevista_terminada' : bool
                 }
         if dict == None:
             return {nuevo : datos}
@@ -184,16 +197,16 @@ class ActionInfoTalleres(Action):
                 salida = salida + "\n\t| Tallerista: Prof. Sandra Olthoff\n\t| Descripción: Técnicas de estudio basadas en neuroaprendizaje. Proceso de aprendizaje. Captación y selección de información. Codificación de la información. Memorización de contenidos. Sistemas mnemotécnicos.\n\t| Duración: 3 meses\n\t| Día y horario: Lunes de 17.00 a 19.00"
             elif (str(taller) == "crecimiento"):
                 salida = salida + "\n\t| Tallerista: Prof. Sandra Olthoff\n\t| Descripción: Herramientas para determinar 'qué quiere' en su vida. Cambiar el paradigma 'no puedo' por 'si puedo'. Utilizar sus recursos internos y externos.\n\t| Duración: 3 meses\n\t| Día y horario: Lunes de 15.00 a 17.00."
-            elif (str(taller) == "español"):
+            elif (str(taller) == "espaniol"):
                 salida = salida + "\n\t| Tallerista: Téc. Sup. Luis Pérez\n\t| Descripción: Identificar palabras según su acentuación. Aplicar coherencia y cohesión en la elaboración de una respuesta de examen. Identificar recursos y estructura en los textos expositivos y argumentativos.\n\t| Duración: 2 meses\n\t| Día y horario: Miércoles de 16.00 a 18.00"
             elif (str(taller) == "audiovisual"):
                 salida = salida + "\n\t| Tallerista: Bianca Ratti\n\t| Descripción: Adquirir las herramientas básicas para la producción y la realización audiovisual, así como el reconocimiento social y cultural de todas las sensibilidades y narrativas en que se plasma la creatividad política y cultural de nuestras sociedades.\n\t| Duración: 3 meses\n\t| Día y horario: Lunes de 17.00 a 19.00"
             elif (str(taller) == "canina"):
-                salida = salida + "\n\t| Tallerista: Natalia Ugolini\n\t| Descripción: actividades en las que el propietario pueda aprender, entender y empatizar con su animal de compañía. Educación básica canina: conductas de sentado, echado, quedarse quieto, andar al lado y venir a la llamada.\n\t| Duración: 2 meses\n\t| Día y horario: Miércoles de 14.00 a 15.00, o de 15.00 a 16.00"
+                salida = salida + "\n\t| Tallerista: Natalia Ugolini\n\t| Descripción: actividades en las que el propietario pueda aprender, entender y empatizar con su animal de companiía. Educación básica canina: conductas de sentado, echado, quedarse quieto, andar al lado y venir a la llamada.\n\t| Duración: 2 meses\n\t| Día y horario: Miércoles de 14.00 a 15.00, o de 15.00 a 16.00"
             elif (str(taller) == "dibujo"):
                 salida = salida + "\n\t| Tallerista: Fabiana Luna\n\t| Descripción: El objetivo es conseguir que a través de una imagen dada busquen la suya propia.\n\t| Duración: 3 meses\n\t| Día y horario: Lunes 14.00 a 16.00"
             elif (str(taller) == "interiores"):
-                salida = salida + "\n\t| Tallerista: Leonardo Mejuto\n\t| Descripción: Incorporación de conocimientos esenciales a la hora de decorar, diseñar y proyectar una vivienda, desarrollar una mirada crítica y transformadora del espacio obteniendo el máximo resultado de acuerdo a la disponibilidad de los recursos dados. \n\t| Duración: 3 meses\n\t| Día y horario: Viernes de 16.30 a 18.30"
+                salida = salida + "\n\t| Tallerista: Leonardo Mejuto\n\t| Descripción: Incorporación de conocimientos esenciales a la hora de decorar, diseniar y proyectar una vivienda, desarrollar una mirada crítica y transformadora del espacio obteniendo el máximo resultado de acuerdo a la disponibilidad de los recursos dados. \n\t| Duración: 3 meses\n\t| Día y horario: Viernes de 16.30 a 18.30"
             elif (str(taller) == "derecho"):
                 salida = salida + "\n\t| Tallerista: Abg. Ma. Eugenia Quehé\n\t| Descripción: Existe la ficción legal de qué: 'EL DERECHO SE PRESUME CONOCIDO POR TODOS' ¿Qué tan verdadera es esta ficción? ¿Qué tanto sabemos de Derecho los ciudadanos? El taller apunta a democratizar el saber del Derecho a todos los ciudadanos. Destinado a alumnos y publico en general.\n\t| Duración: 3 meses\n\t| Día y horario: Viernes de 16.00 a 18.00"
             elif (str(taller) == "preventiva"):
@@ -201,7 +214,7 @@ class ActionInfoTalleres(Action):
             elif (str(taller) == "negocio"):
                 salida = salida + "\n\t| Tallerista: Lic. Gabriela Rentería\n\t| Descripción: Comprender la importancia de la IDEA de negocio. Obtener conocimientos de formas legales de un negocio. Obtener herramientas para desarrollar un plan de negocios.\n\t| Duración: 3 meses\n\t| Día y horario: Jueves de 18.00 a 20.00"
             elif (str(taller) == "gestion"):
-                salida = salida + "\n\t| Tallerista: Lic. Gabriela Rentería\n\t| Descripción: controlar y reportar los costos de alimentos y bebidas, comprender la importancia de la estandarización de recetas. Fijar precios de venta y, diseñar un menú acorde a los clientes a quienes deseen dirigirse contemplando su rentabilidad y popularidad.\n\t| Duración: 3 meses\n\t| Día y horario: Jueves de 14.00 a 16.00"
+                salida = salida + "\n\t| Tallerista: Lic. Gabriela Rentería\n\t| Descripción: controlar y reportar los costos de alimentos y bebidas, comprender la importancia de la estandarización de recetas. Fijar precios de venta y, diseniar un menú acorde a los clientes a quienes deseen dirigirse contemplando su rentabilidad y popularidad.\n\t| Duración: 3 meses\n\t| Día y horario: Jueves de 14.00 a 16.00"
             elif (str(taller) == "cafe"):
                 salida = salida + "\n\t| Tallerista: Lic. Gabriela Rentería\n\t| Descripción: Obtener conocimientos de cómo se produce y de servicios del café, té, chocolate y yerba mate\n\t| Duración: 2 meses\n\t| Día y horario: Miércoles de 13.00 a 15.00"
             elif (str(taller) == "vino"):
@@ -296,13 +309,13 @@ class ActionSetIngReins(Action):
 class ActionSetAnCurs(Action):
 
     def name(self) -> Text:
-        return "action_set_años_cursados"
+        return "action_set_anios_cursados"
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         intent = tracker.latest_message['intent'].get('name')
-        if (intent == "entrevista_años_cursados"):
-            anio = next(tracker.get_latest_entity_values("años cursando"), None)
-            return [SlotSet("años_cursados", float(anio))]
+        if (intent == "entrevista_anios_cursados"):
+            anio = next(tracker.get_latest_entity_values("anios cursando"), None)
+            return [SlotSet("anios_cursados", float(anio))]
         else:
             return []
 
@@ -346,21 +359,21 @@ class ActionOpinarMaterias(Action):
             if (tracker.get_slot("materias_cursadas") == tracker.get_slot("materias_aprobadas")):
                 coeficiente = 1
             else:
-                coeficiente = tracker.get_slot("años cursando") / tracker.get_slot("materias_cursadas") - tracker.get_slot("materias_aprobadas")
+                coeficiente = tracker.get_slot("anios cursando") / tracker.get_slot("materias_cursadas") - tracker.get_slot("materias_aprobadas")
             if (coeficiente < 0.25):
-                salida = "Parece que la carrera te está resultando bastante difícil. No sé si sabías, pero se necesita cierta cantidad de materias aprobadas por año para acceder a nuestras becas"
+                salida = "Parece que la carrera te está resultando bastante difícil. No sé si sabías, pero se necesita cierta cantidad de materias aprobadas por anio para acceder a nuestras becas"
                 dispatcher.utter_message(text=str(salida))
             elif (coeficiente >= 0.25 and coeficiente < 0.5):
-                salida = "Bueno, la verdad es que deberías elevar tu promedio de materias aprobadas por año, tus números son un poco bajos y eso es un limitante al momento de acceder a nuestras becas"
+                salida = "Bueno, la verdad es que deberías elevar tu promedio de materias aprobadas por anio, tus números son un poco bajos y eso es un limitante al momento de acceder a nuestras becas"
                 dispatcher.utter_message(text=str(salida))
             elif (coeficiente >= 0.5 and coeficiente < 0.75):
                 salida = "Estás bien, pero para tener más probabilidades de ser seleccionado para la beca tendrías que meterle un poco más de pilas"
                 dispatcher.utter_message(text=str(salida))
             elif (coeficiente >= 0.75 and coeficiente < 1):
-                salida = "Bien, tus materias aprobadas por año en relación a las cursadas están dentro de los márgenes de aceptación de nuestras becas"
+                salida = "Bien, tus materias aprobadas por anio en relación a las cursadas están dentro de los márgenes de aceptación de nuestras becas"
                 dispatcher.utter_message(text=str(salida))
             elif (coeficiente == 1):
-                salida = "¡Excelente! Un desempeño tan alto abre más puertas y eleva tus chances de acceder a la beca que desees"
+                salida = "¡Excelente! Un desempenio tan alto abre más puertas y eleva tus chances de acceder a la beca que desees"
                 dispatcher.utter_message(text=str(salida))
         return []
 
@@ -397,7 +410,7 @@ class ActionOtraBeca(Action):
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         mood = getMood(tracker.get_slot("mood"))
         if (mood < 0.5):
-            salida = "Bueno " + tracker.get_slot("nombre") + ", a pesar de tu desempeño, lograste aplicar para alguna otra beca?"
+            salida = "Bueno " + tracker.get_slot("nombre") + ", a pesar de tu desempenio, lograste aplicar para alguna otra beca?"
             dispatcher.utter_message(text=str(salida))
         elif (mood >= 0.5):
             salida = "Sos beneficiario de alguna otra beca?"
@@ -624,8 +637,8 @@ class ActionResultadoBeca(Action):
             if (tracker.get_slot("beca_aplica") == "finalizacion"):
                 #ser reinscripto
                 condicion1 = (tracker.get_slot("ingresante/reinscripto") == "reinscripto") or (tracker.get_slot("usuarios")[tracker.get_slot("nombre")]["ingresante/reiscripto"] == "reinscripto")
-                #haber cursado 3 o mas años
-                condicion2 = (tracker.get_slot("años_cursados") >= 3) or (tracker.get_slot("usuarios")[tracker.get_slot("nombre")]["años_cursados"] >= 3)
+                #haber cursado 3 o mas anios
+                condicion2 = (tracker.get_slot("anios_cursados") >= 3) or (tracker.get_slot("usuarios")[tracker.get_slot("nombre")]["anios_cursados"] >= 3)
                 #haber aprobado mas del 65% de las materias cursadas
                 condicion3 = (tracker.get_slot("materias_aprobadas") / tracker.get_slot("materias_cursadas") > 0.65) or (tracker.get_slot("usuarios")[tracker.get_slot("nombre")]["materias_aprobadas"] / tracker.get_slot("usuarios")[tracker.get_slot("nombre")]["materias_cursadas"] > 0.65)
                 #no recibir otra beca

@@ -26,7 +26,7 @@ intents:
   - entrevista_soy_ingresante #listo
   - entrevista_soy_reinscripto #listo
   - entrevista_carrera_estudiando #listo
-  - entrevista_años_cursados #listo
+  - entrevista_anios_cursados #listo
   - entrevista_materias_cursadas #listo
   - entrevista_materias_aprobadas #listo
   - consultar_resultado_beca #listo
@@ -47,7 +47,7 @@ entities:
   - talleres
   - becas
   - inf_general
-  - años cursando
+  - anios cursando
   - materias cursadas
   - cantidad familia
   - familia trabajadora
@@ -77,7 +77,7 @@ slots:
   ingresante/reinscripto:
     type: text
 
-  años_cursados:
+  anios_cursados:
     type: float
 
   materias_cursadas:
@@ -90,7 +90,7 @@ slots:
     type: list
 
   otra_beca:
-    type: boolean
+    type: bool
 
   cantidad_familia:
     type: float
@@ -104,17 +104,17 @@ slots:
   gasto_familiar:
     type: float
 
-  distancia universidad:
+  distancia_universidad:
     type: float
 
-  cantidad vehiculos:
+  cantidad_vehiculos:
     type: float
 
   familiares_enfermos:
-    type: boolean
+    type: bool
 
   entrevista_terminada:
-    type: boolean
+    type: bool
 
   usuarios:
     type: any
@@ -129,7 +129,7 @@ actions:
   - action_cerrar_sesion
   - action_beneficio_becas
   - action_set_ingresante/reinscripto
-  - action_set_años_cursados
+  - action_set_anios_cursados
   - action_set_materias_cursadas
   - action_set_materias_aprobadas
   - action_opinar_materias_aprobadas
@@ -173,13 +173,13 @@ responses:
   - text: "Las carreras de nuestra universidad son:\n\t| Licenciatura en Logística Integral\n\t| Ingeniería Civil\n\t| Ingeniería Electromecánica\n\t| Ingeniería Industrial\n\t| Ingeniería Química\n\t| Ingeniería en Agrimensura"
 
   utter_preguntar_talleres:
-  - text: "Los talleres que se dictan en nuestra universidad son: \n\t | APRENDER A APRENDER. TÉCNICAS DE ESTUDIO BASADAS EN NEUROAPRENDIZAJE\n\t| CONCRETA TUS OBJETIVOS. CRECIMIENTO PERSONAL\n\t| TALLER DE LENGUA ESPAÑOLA\n\t| TALLER DE “PRODUCCIÓN Y REALIZACIÓN AUDIOVISUAL”\n\t| EDUCACIÓN CANINA INCLUSIVA\n\t| INICIACIÓN AL DIBUJO\n\t| TALLER DE DISEÑO DE INTERIORES\n\t| DERECHO PARA NO ABOGADOS\n\t| ABOGACÍA PREVENTIVA\n\t| HERRAMIENTAS PARA UN NEGOCIO EXITOSO\n\t| GESTIÓN GASTRONÓMICA: ADMINISTRACIÓN Y CONTROL DE COSTOS E INGENIERÍA DE MENÚ\n\t| INTRODUCCIÓN AL CONOCIMIENTO DEL CAFÉ, TÉ, CHOCOLATE Y YERBA MATE\n\t| INTRODUCCIÓN AL CONOCIMIENTO DEL VINO Y MARIDAJE\n\t| TALLER DE LENGUA ITALIANA\n\t| COMUNICACIÓN Y MARKETING DIGITAL PARA EMPRENDEDORES Y CURIOSOS"
+  - text: "Los talleres que se dictan en nuestra universidad son: \n\t | APRENDER A APRENDER. TÉCNICAS DE ESTUDIO BASADAS EN NEUROAPRENDIZAJE\n\t| CONCRETA TUS OBJETIVOS. CRECIMIENTO PERSONAL\n\t| TALLER DE LENGUA ESPANIOLA\n\t| TALLER DE “PRODUCCIÓN Y REALIZACIÓN AUDIOVISUAL”\n\t| EDUCACIÓN CANINA INCLUSIVA\n\t| INICIACIÓN AL DIBUJO\n\t| TALLER DE DISENIO DE INTERIORES\n\t| DERECHO PARA NO ABOGADOS\n\t| ABOGACÍA PREVENTIVA\n\t| HERRAMIENTAS PARA UN NEGOCIO EXITOSO\n\t| GESTIÓN GASTRONÓMICA: ADMINISTRACIÓN Y CONTROL DE COSTOS E INGENIERÍA DE MENÚ\n\t| INTRODUCCIÓN AL CONOCIMIENTO DEL CAFÉ, TÉ, CHOCOLATE Y YERBA MATE\n\t| INTRODUCCIÓN AL CONOCIMIENTO DEL VINO Y MARIDAJE\n\t| TALLER DE LENGUA ITALIANA\n\t| COMUNICACIÓN Y MARKETING DIGITAL PARA EMPRENDEDORES Y CURIOSOS"
 
   utter_preguntar_becas:
   - text: "La universidad ofrece el Programa de Becas de la UNICEN, el cual está conformado por las siguientes becas:\n\t| Beca de finalización de carrera\n\t| Beca de ayuda económica\n\t| Beca de transporte público"
 
   utter_requisitos_becas:
-  - text: "La universidad presenta distintos requisitos para las diferentes becas que se pueden solicitar:\n\t| Beca de finalización de carrera: es necesario ser un alumno reinscripto estando en minimo 4to año\n\t| Beca de ayuda económica: Para poder solicitar esta beca es necesario, presentar informes donde la ganancia de los tutores no supere los 60.000 pesos argentinos y después de ahi se evaluara cada situacion.\n\t| Beca de transporte público:  Para alumnos de 2do hasta 5to año deben presentar las materias a cursar y en las fechas de diciembre-febrero pasadas haberse presentado a al menos 1 final. Para alumnos ingresantes, presentar materias a cursar junto a las asistencias que obtuvo del curso ingreso."
+  - text: "La universidad presenta distintos requisitos para las diferentes becas que se pueden solicitar:\n\t| Beca de finalización de carrera: es necesario ser un alumno reinscripto estando en minimo 4to anio\n\t| Beca de ayuda económica: Para poder solicitar esta beca es necesario, presentar informes donde la ganancia de los tutores no supere los 60.000 pesos argentinos y después de ahi se evaluara cada situacion.\n\t| Beca de transporte público:  Para alumnos de 2do hasta 5to anio deben presentar las materias a cursar y en las fechas de diciembre-febrero pasadas haberse presentado a al menos 1 final. Para alumnos ingresantes, presentar materias a cursar junto a las asistencias que obtuvo del curso ingreso."
 
   utter_como_inscribirse_beca:
   - text: "Para inscribirte a una beca deberás ingresar a https://becas.unicen.edu.ar/ y completar un formulario con:\n\t| Datos personales generales del solicitante\n\t| Datos académicos del solicitante\n\t| Datos de salud del solicitante\n\t| Datos relacionados con becas y pasantías del solicitante\n\t| Datos económicos del solicitante\n\t| Datos laborales del solicitante\n\t| Datos acerca de la(s) beca(s) solicitada(s)\n\t| Datos del grupo familiar del solicitante\n\t| Observaciones del solicitante\nGran parte de las preguntas del formulario podrán ser respondidas en el momento, pero en algunas de ellas se requerirá que adjuntes cierta documentación, la cual deberás enviar por mail a administracion@quequen.unicen.edu.ar con el asunto [SOLICITUD DE BECA] APELLIDO, Nombre\n¿Te gustaría completar un formulario de inscripción de beca en este momento?"
@@ -199,8 +199,8 @@ responses:
   utter_entrevista_preguntar_carrera:
   - text: "Bien, qué carrera estás cursando?"
 
-  utter_entrevista_años_cursados:
-  - text: "Por qué año de la carrera vas?"
+  utter_entrevista_anios_cursados:
+  - text: "Por qué anio de la carrera vas?"
 
   utter_entrevista_materias_cursadas:
   - text: "Y cuántas materias cursaste?"

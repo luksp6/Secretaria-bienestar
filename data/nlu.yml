@@ -225,14 +225,14 @@ nlu:
 
 - intent: entrevista_soy_ingresante #hecho story
   examples: |
-    - soy ingresante, es mi primer año
-    - es mi primer año
+    - soy ingresante, es mi primer anio
+    - es mi primer anio
     - soy ingresante
     - es mi primera vez en la universidad
 
 - intent: entrevista_soy_reinscripto #hecho story
   examples: |
-    - soy reinscripto, ya estoy en el [3](años cursando)er año
+    - soy reinscripto, ya estoy en el [3](anios cursando)er anio
     - soy reinscripto
     - ya estudiaba
 
@@ -242,11 +242,11 @@ nlu:
     - estudio [civil](carreras)
     - estoy en [agrimensura](carreras)
 
-- intent: entrevista_años_cursados #hecho story
+- intent: entrevista_anios_cursados #hecho story
   examples: |
-    - estoy en el [2](años cursando)do de la carrera
-    - voy por el [4](años cursando)to año
-    - pase al [3](años cursando)er año
+    - estoy en el [2](anios cursando)do de la carrera
+    - voy por el [4](anios cursando)to anio
+    - pase al [3](anios cursando)er anio
 
 - intent: entrevista_materias_cursadas #hecho story
   examples: |
@@ -263,9 +263,9 @@ nlu:
 - intent: pedir_informacion #falta story
   examples: |
     - me podrías dar informacion sobre el [calendario](inf_general)?
-    - ¿cómo es el [calendario](inf_general) de este año?
+    - ¿cómo es el [calendario](inf_general) de este anio?
     - cuales son las [fechas](inf_general)?
-    - ¿cuáles son los [horarios](inf_general) de este año?
+    - ¿cuáles son los [horarios](inf_general) de este anio?
 
 - intent: entrevista_cantidad_familia #hecha story
   examples: |
@@ -406,10 +406,10 @@ nlu:
     - concreta tus objetivos
     - crecimiento personal
 
-- synonym: español
+- synonym: espaniol
   examples: |
-    - TALLER DE LENGUA ESPAÑOLA
-    - lengua española
+    - TALLER DE LENGUA ESPANIOLA
+    - lengua espaniola
 
 - synonym: audiovisual
   examples: |
@@ -433,9 +433,9 @@ nlu:
 
 - synonym: interiores
   examples: |
-    - TALLER DE DISEÑO DE INTERIORES
-    - diseño de interiores
-    - diseño
+    - TALLER DE DISENIO DE INTERIORES
+    - disenio de interiores
+    - disenio
 
 - synonym: derecho
   examples: |
@@ -519,7 +519,7 @@ nlu:
 
 #- synonym: faq_seguir_cursando
 #  examples: |
-#    -  ¿Tengo que tener aprobado el primer año para seguir cursando?
+#    -  ¿Tengo que tener aprobado el primer anio para seguir cursando?
 
 #- synonym: faq_siu_guarani
 #  examples: |
