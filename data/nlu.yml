@@ -142,122 +142,141 @@ nlu:
     - hola, mi nombre es [luis](nombres)
     - hola, me llamo [antonio](nombres)
 
-- intent: pedir_contacto
+- intent: pedir_contacto #hecho storie
   examples: |
     - cuales son los medios de contacto de la universidad?
     - como me comunico con la sede?
 
-- intent: pedir_web
+- intent: pedir_web #hecho storie
   examples: |
     - web
     - pagina
     - sitio web
     - pagina oficial
 
-- intent: preguntar_carreras
+- intent: preguntar_carreras #hecho storie
   examples: |
     - que carreras hay en la universidad?
     - en que carreras me puedo inscribir?
     - cuales son las carreras de la universidad?
 
-- intent: preguntar_talleres
+- intent: preguntar_talleres #hecho storie
   examples: |
     - que talleres se dictan en la universidad?
     - cuales son los talleres a los que me puedo inscribir?
     - cuales son los talleres que se dan en la universidad?
 
-- intent: pedir_documentos
+- intent: pedir_documentos #hecho storie
   examples: |
     - donde puedo iniciar el tramite para solicitar mi [certificado](documento)?
     - donde puedo iniciar el tramite par solicitar mi [titulo](documento)?
 
-- intent: pedir_info_carreras
+- intent: pedir_info_carreras #hecho storie
   examples: |
     - donde puedo conseguir mas informacion sobre la carrera de [Licenciatura en Logística Integral](carreras)?
     - me pasarias mas informacion sobre la carrera de [Ingeniería Industrial](carreras)?
 
-- intent: pedir_info_talleres
+- intent: pedir_info_talleres #hecho storie
   examples: |
     - me darias mas informacion sobre el taller [APRENDER A APRENDER. TÉCNICAS DE ESTUDIO BASADAS EN NEUROAPRENDIZAJE](talleres)?
     - quisiera saber algo mas sobre el taller [EDUCACIÓN CANINA INCLUSIVA](talleres)
 
-- intent: preguntar_becas
+- intent: preguntar_becas #hecho storie
   examples: |
     - que becas ofrece la universidad?
     - cuales son las becas con las que cuenta la institucion?
     - que becas hay?
 
-- intent: pedir_requsitos_becas
+- intent: pedir_requsitos_becas #hecho storie
   examples: |
     -  cuales son los requisitos que debo cumplir para la beca 
 
-- intent: pedir_beneficios_becas
+- intent: pedir_beneficios_becas #hecho storie
   examples: |
     - que beneficios ofrece la beca [finalizacion de carrera](becas)?
     - cuales son los beneficios de la beca de [ayudas economicas](becas)?
     - que beneficios me da la beca [3er beneficio](becas)?
 
-- intent: como_inscribirse_beca
+- intent: como_inscribirse_beca #hecho storie
   examples: |
     - como me inscribo a una beca?
     - donde me puedo inscribir a las becas?
     - donde me anoto a alguna beca?
 
-- intent: pedir_entrevista_beca
+- intent: pedir_entrevista_beca #hecho storie
   examples: |
     - tengo turno para la entrevista de una beca
     - quiero ser entrevistado para una beca
     - me inscribi a una beca y me dijeron que me comunique para la entrevista
 
-- intent: entrevista_soy_ingresante
+- intent: entrevista_soy_ingresante #hecho storie
   examples: |
     - soy ingresante, es mi primer año
     - es mi primer año
     - soy ingresante
     - es mi primera vez en la universidad
 
-- intent: entrevista_soy_reinscripto
+- intent: entrevista_soy_reinscripto #hecho storie
   examples: |
     - soy reinscripto, ya estoy en el [3er](años cursando) año
     - soy reinscripto
     - ya estudiaba
 
-- intent: entrevista_carrera_estudiando
+- intent: entrevista_carrera_estudiando #hecho storie
   examples: |
     - estoy estudiando [Licenciatura en Logística Integral](carreras)
     - estudio [Ingeniería Civil](carreras)
     - estoy en [Ingeniería de Agrimensura](carreras)
 
-- intent: entrevista_años_cursados
+- intent: entrevista_años_cursados #hecho storie
   examples: |
     - estoy en el [2do](años cursando) de la carrera
     - voy por el [4to](años cursando) año
     - pase al [3er](años cursando) año
 
-
-- intent: entrevista_materias_cursadas
+- intent: entrevista_materias_cursadas #hecho storie
   examples: |
     - curse [6](materias cursadas)
     - curse [20](materias cursadas) materias
     - hice [10](materias cursadas) materias
 
-- intent: entrevista_materias_aprobadas
+- intent: entrevista_materias_aprobadas #hecho storie
   examples: |
     - aprobe [6](materias aprobadas)
     - meti [29](materias aprobadas)
     - de esas meti [todas](materias aprobadas)
 
-#buscar expresiones regulares
-- intent: pedir_informacion
+- intent: pedir_informacion #falta storie
   examples: |
-    - me podrías dar informacion sobre el taller de [talleres](inf_talleres)?
-    - me podrías dar informacion sobre el [calendario](inf_calendario)?
-    - ¿cómo es el [calendario](inf_calendario) de este año?
-    - ¿cuáles son las [carreras](inf_carreras)?
-    - cuales son las [fechas](inf_fechas)?
-    - ¿cuáles son los [horarios](inf_horarios) de este año?
-    - ¿qué hay que hacer para [ingreso](inf_ingreso)?
-    - ¿que [becas](inf_becas) tenes disponible?
+    - me podrías dar informacion sobre el [calendario](inf_general)?
+    - ¿cómo es el [calendario](inf_general) de este año?
+    - cuales son las [fechas](inf_general)?
+    - ¿cuáles son los [horarios](inf_general) de este año?
+
+- intent: entrevista_cantidad_familia #hecha storie
+  examples: |
+    - En total en mi familia somos [4](cantidad familia)
+    - En mi familia somos [7](cantidad familia)
+    - somos [6](cantidad familia) en mi casa
+    - solo [1](cantidad familia)
+
+- intent: entrevista_cantidad_trabajan #hecha storie
+  examples: |
+    - trabajan [2](familia trabajadora)
+    - solo [1](familia trabajadora)
+    - en mi familia hasta ahora trabaja solo [1](familia trabajadora) que es mi padre
+    - [0](familia trabajadora), nadie tiene trabajo hasta ahora
+
+- intent: entrevista_ingresos_familiares #hecha storie
+  examples: |
+    - Nuestros ingresos rondan en lo [65000](ingreso familiar)
+    - Aproximadamente [85000](ingreso familiar)
+    - ingresos fijos de [76500](ingreso familiar)
+
+- intent: entrevista_gastos_familiares #hecha storie
+  examples: |
+    - Se gastaran unos [57000](gasto familiar) no estoy muy seguro la verdad
+    - Y, ponele que unos [70000](gasto familiar)
 
 - intent: bot_challenge
   examples: |

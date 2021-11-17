@@ -36,7 +36,8 @@ class ActionIdentificarse(Action):
                     'carrera_interes' : None,
                     'taller_interes' : None,
                     'beca_interes' : None,
-                    'ingresante/reinscripto' : None
+                    'ingresante/reinscripto' : None,
+                    'mood' : []
                 }
         if dict == None:
             return {nuevo : datos}
@@ -102,6 +103,33 @@ class ActionInfoCarreras(Action):
                 salida = salida + "http://www.quequen.unicen.edu.ar/?page_id=117"
             elif (str(carrera) == "Ingeniería en Agrimensura"):
                 salida = salida + "http://www.quequen.unicen.edu.ar/?page_id=3906"
+            else:
+                salida = "Parece que la carrera " + str(carrera) + " no existe en nuestra universidad. Te recuerdo las carreras con las que contamos:\n\t| Licenciatura en Logística Integral\n\t| Ingeniería Civil\n\t| Ingeniería Electromecánica\n\t| Ingeniería Industrial\n\t| Ingeniería Química\n\t| Ingeniería en Agrimensura"
+                verif = 1
+            dispatcher.utter_message(text=str(salida))
+            if (verif == 0):
+                return [SlotSet("carrera_interes", carrera)]
+            else:
+                return []
+        else:
+            return []
+
+class ActionInformacion(Action):
+
+    def name(self) -> Text:
+        return "action_informacion"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        intent = tracker.latest_message['intent'].get('name')
+        if (intent == "pedir_informacion"):
+            info = next(tracker.get_latest_entity_values("inf_general"), None)
+            salida = "Para obtener informacion detallada sobre " + str(info) + " mira la siguiente página: "
+            if (str(info) == "Calendario"):
+                salida = salida + "http://www.quequen.unicen.edu.ar/wp-content/uploads/2021/08/2021-Calendario-Acad%C3%A9mico-UEUQ-DEFINITIVO-1.pdf"
+            elif (str(info) == "Horarios"):
+                salida = salida + "http://www.quequen.unicen.edu.ar/?page_id=83"
+            elif (str(info) == "Fechas"):
+                salida = salida + "http://www.quequen.unicen.edu.ar/?page_id=491"
             else:
                 salida = "Parece que la carrera " + str(carrera) + " no existe en nuestra universidad. Te recuerdo las carreras con las que contamos:\n\t| Licenciatura en Logística Integral\n\t| Ingeniería Civil\n\t| Ingeniería Electromecánica\n\t| Ingeniería Industrial\n\t| Ingeniería Química\n\t| Ingeniería en Agrimensura"
                 verif = 1
@@ -197,8 +225,8 @@ class ActionBeneficioBecas(Action):
                 salida = salida + "\n\t| Ingresantes: No acceden a esta beca.\n\t| Reinscriptos: $2935 (beneficio durante 10 meses)"
             elif (str(becas) == "Beca de ayuda económica"):
                 salida = salida + "\n\t| Ingresantes: $810 (beneficio durante 9 meses)\n\t| Reinscriptos: $1515 (beneficio durante 10 meses)"
-            elif (str(becas) == "Beca de 3er beneficio"):
-                salida = salida + "\n\t| Ingresantes: No acceden a esta beca.\n\t| Reinscriptos: $810 (beneficio durante 10 meses)"
+            elif (str(becas) == "Beca de transporte público"):
+                salida = salida + "\n\t| $810 de carga en saldo para tarjeta de transporte público (beneficio durante 10 meses)"
             else:
                 salida = "Parece que esa beca no forma parte de nuestro programa. Te recuerdo que el Programa de Becas de la UNICEN se conforma por las siguientes becas:\n\t| Beca de finalización de carrera\n\t| Beca de ayuda económica\n\t| Beca de 3er beneficio"
                 verif = 1
@@ -281,15 +309,85 @@ class ActionOpinarMaterias(Action):
                 coeficiente = tracker.get_slot("años cursando") / tracker.get_slot("materias_cursadas") - tracker.get_slot("materias_aprobadas")
             if (coeficiente < 0.25):
                 salida = "Parece que la carrera te está resultando bastante difícil. No sé si sabías, pero se necesita cierta cantidad de materias aprobadas por año para acceder a nuestras becas"
+                dispatcher.utter_message(text=str(salida))
             elif (coeficiente >= 0.25 and coeficiente < 0.5):
                 salida = "Bueno, la verdad es que deberías elevar tu promedio de materias aprobadas por año, tus números son un poco bajos y eso es un limitante al momento de acceder a nuestras becas"
+                dispatcher.utter_message(text=str(salida))
             elif (coeficiente >= 0.5 and coeficiente < 0.75):
                 salida = "Estás bien, pero para tener más probabilidades de ser seleccionado para la beca tendrías que meterle un poco más de pilas"
+                dispatcher.utter_message(text=str(salida))
             elif (coeficiente >= 0.75 and coeficiente < 1):
                 salida = "Bien, tus materias aprobadas por año en relación a las cursadas están dentro de los márgenes de aceptación de nuestras becas"
+                dispatcher.utter_message(text=str(salida))
             elif (coeficiente == 1):
                 salida = "¡Excelente! Un desempeño tan alto abre más puertas y eleva tus chances de acceder a la beca que desees"
-            else:
-                salida = ""
+                dispatcher.utter_message(text=str(salida))
+        return []
+
+class ActionSetMood(Action):
+
+    def name(self) -> Text:
+        return "action_set_mood"
+
+    mood = []
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        intent = tracker.latest_message['intent'].get('name')
+        if (intent == "mood_great"):
+            mood.append(1)
+            return [SlotSet("mood", mood)]
+        elif (intent == "mood_unhappy"):
+            mood.append(0)
+            return [SlotSet("mood", mood)]
+        else:
+            return []
+
+def getMood(lista):
+    cont = 0
+    for indice in lista:
+        cont += indice
+    return (cont / len(lista))
+
+
+class ActionOtraBeca(Action):
+
+    def name (self) -> Text:
+        return "action_entrevista_recibis_otra_beca"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        mood = getMood(tracker.get_slot("mood"))
+        if (mood < 0.5):
+            salida = "Bueno " + tracker.get_slot("nombre") + ", a pesar de tu desempeño, lograste aplicar para alguna otra beca?"
             dispatcher.utter_message(text=str(salida))
+        elif (mood >= 0.5):
+            salida = "Sos beneficiario de alguna otra beca?"
+            dispatcher.utter_message(text=str(salida))
+        return []
+
+class ActionSetOtraBeca(Action):
+    
+    def name(self) -> Text:
+        return "action_set_cobra_otra_beca"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        intent = tracker.latest_message['intent'].get('name')
+        if (intent == "affirm"):
+            return [SlotSet("otra_beca", True)]
+        elif (intent == "deny"):
+            return [SlotSet("otra_beca", False)]
+        else:
+            return []
+
+class ActionOpinarOtraBeca(Action):
+
+    def name(self) -> Text:
+        return "action_opinar_cobra_otra_beca"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        if (tracker.get_slot("otra_beca")):
+            salida = ""
+            disptacher.utter_message(text=str(salida))
+        elif not (tracker.get_slot("otra_beca")):
+            salida = ""
+            disptacher.utter_message(text=str(salida))
         return []

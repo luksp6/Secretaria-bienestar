@@ -36,6 +36,11 @@ stories:
   - intent: pedir_web
   - action: utter_pedir_web
 
+- story: pedir informacion
+  steps:
+  - intent: pedir_informacion
+  - action: action_informacion
+
 - story: preguntar carreras #andando
   steps:
   - intent: preguntar_carreras
@@ -60,6 +65,11 @@ stories:
   steps:
   - intent: preguntar_becas
   - action: utter_preguntar_becas
+
+- story: requisitos becas #listo
+  steps:
+  - intent: pedir_requsitos_becas
+  - action: utter_requisitos_becas
 
 - story: pedir beneficios becas #listo
   steps:
@@ -93,56 +103,56 @@ stories:
   - action: action_ingresante/reinscripto #guarda el dato en un slot
   - action: utter_entrevista_preguntar_carrera #pregunta que carrera estudia
   - intent: entrevista_carrera_estudiando #responde carrera que estudia
-  - action: utter_entrevista_años_cursados #pregunta años de la carrera cursados
-  - intent: entrevista_años_cursados #responde años de la carrera cursados
-  - action: action_set_años_cursados #guarda el dato en un slot
+  - action: utter_entrevista_aï¿½os_cursados #pregunta aï¿½os de la carrera cursados
+  - intent: entrevista_aï¿½os_cursados #responde aï¿½os de la carrera cursados
+  - action: action_set_aï¿½os_cursados #guarda el dato en un slot
   - action: utter_entrevista_materias_cursadas #pregunta cantidad de materias cursadas
   - intent: entrevista_materias_cursadas #responde cantidad de materias cursadas
   - action: action_set_materias_cursadas #guarda el dato en un slot
   - action: utter_entrevista_materias_aprobadas #pregunta cantidad de materias aprobadas
   - intent: entrevista_materias_aprobadas #responde cantidad de materias aprobadas
   - action: action_set_materias_aprobadas #guarda el dato en un slot
-  - action: action_opinar_materias_aprobadas #opina sobre el solicitante en base a la relacion de años cursados, materias cursadas y materias aprobadas
+  - action: action_opinar_materias_aprobadas #opina sobre el solicitante en base a la relacion de aï¿½os cursados, materias cursadas y materias aprobadas
   - checkpoint: opino_materias_aprobadas
 
-- story: pedir entrevista beca reinscripto (opinion 1 buena respuesta)
+- story: pedir entrevista beca reinscripto (opinion 1 buena respuesta) #listo
   steps:
   - checkpoint: opino_materias_aprobadas
   - intent: mood_great #responde de forma afirmativa, sigue entusiasmado
-  - action: action_mood_great #se guarda en slot de tipo lista que la respuesta a la opinion 1 fue favorable
+  - action: action_set_mood #se guarda en slot de tipo lista que la respuesta a la opinion 1 fue favorable
   - checkpoint: ya seteo opinion 1
 
-- story: pedir entrevista beca reinscripto (opinion 1 mala respuesta)
+- story: pedir entrevista beca reinscripto (opinion 1 mala respuesta) #listo
   steps:
   - checkpoint: opino_materias_aprobadas
   - intent: mood_unhappy #responde de forma negativa, cabizbajo
-  - action: action_mood_unhappy #se guarda en slot de tipo lista que la respuesta a la opinion 1 fue desfavorable
+  - action: action_set_mood #se guarda en slot de tipo lista que la respuesta a la opinion 1 fue desfavorable
   - checkpoint: ya seteo opinion 1
 
-- story: pedir entrevista beca reinscripto (1 opinion)
+- story: pedir entrevista beca reinscripto (1 opinion) #listo
   steps:
   - checkpoint: ya seteo opinion 1
-  - action: utter_entrevista_recibis_otra_beca #pregunta si recibe otra beca
+  - action: action_entrevista_recibis_otra_beca #pregunta si recibe otra beca
   - checkpoint: pregunto_cobra_otra_beca
 
-- story: pedir entrevista beca SI cobra otra beca
+- story: pedir entrevista beca SI cobra otra beca #listo
   steps:
-  - checkpoint: pregunto_cobra_otra_beca
+  - checkpoint: pregunto_cobra_otra_beca 
   - intent: affirm #responde que si cobra otr beca
-  - action: action_cobra_otra_beca #guarda el dato en un slot
+  - action: action_set_cobra_otra_beca #guarda el dato en un slot
   - checkpoint: ya respondio si cobra otra beca
 
-- story: pedir entrevista beca NO cobra otra beca
+ #listo- story: pedir entrevista beca NO cobra otra beca #listo
   steps:
   - checkpoint: pregunto_cobra_otra_beca
   - intent: deny #responde que no cobra otra beca
-  - action: action_cobra_otra_beca #guarda el dato en un slot
+  - action: action_set_cobra_otra_beca #guarda el dato en un slot
   - checkpoint: ya respondio si cobra otra beca
 
 - story: pedir entrevista beca
   steps:
   - checkpoint: ya respondio si cobra otra beca
-  - action: action_opinar_cobra_otra_beca #opina en base a si cobra o no cobra otra beca
+  - action: action_opinar_cobra_otra_beca #opina een base a si cobra o no cobra otra beca
   - checkpoint: opino_cobrar_otra_beca
 
 - story: pedir entrevista beca (opinion 2 buena rspuesta)
