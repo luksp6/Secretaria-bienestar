@@ -29,6 +29,10 @@ intents:
   - entrevista_materias_aprobadas
   - consultar_resultado_beca
   - pedir_informacion 
+  - entrevista_cantidad_familia
+  - entrevista_cantidad_trabajan
+  - entrevista_ingresos_familiares
+  - entrevista_gastos_familiares
  
 
 entities:
@@ -78,6 +82,12 @@ slots:
   otra_beca:
     type: boolean
 
+  cantidad_familia:
+    type: float
+
+  familia_trabajadora:
+    type: float
+
   usuarios:
     type: any
 
@@ -98,6 +108,9 @@ actions:
   - action_entrevista_recibis_otra_beca
   - action_set_cobra_otra_beca
   - action_opinar_cobra_otra_beca
+  - action_cantidad_grupo_familiar
+  - action_set_cantidad_familia
+  - action_set_cantidad_trabajan
 
 responses:
   utter_saludo:
@@ -153,6 +166,9 @@ responses:
 
   utter_entrevista_materias_aprobadas:
   - text: "De esas cuantas aprobaste?"
+
+  utter_cuantos_trabajan:
+  - text: "Y cuantos de ellos trabajan?"
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."

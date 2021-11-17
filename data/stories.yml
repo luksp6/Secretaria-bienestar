@@ -142,31 +142,31 @@ stories:
   - action: action_set_cobra_otra_beca #guarda el dato en un slot
   - checkpoint: ya respondio si cobra otra beca
 
- #listo- story: pedir entrevista beca NO cobra otra beca #listo
+- story: pedir entrevista beca NO cobra otra beca #listo
   steps:
   - checkpoint: pregunto_cobra_otra_beca
   - intent: deny #responde que no cobra otra beca
   - action: action_set_cobra_otra_beca #guarda el dato en un slot
   - checkpoint: ya respondio si cobra otra beca
 
-- story: pedir entrevista beca
+- story: pedir entrevista beca #listo
   steps:
   - checkpoint: ya respondio si cobra otra beca
   - action: action_opinar_cobra_otra_beca #opina een base a si cobra o no cobra otra beca
   - checkpoint: opino_cobrar_otra_beca
 
-- story: pedir entrevista beca (opinion 2 buena rspuesta)
+- story: pedir entrevista beca (opinion 2 buena rspuesta) #listo
   steps:
   - checkpoint: opino_cobrar_otra_beca
   - intent: mood_great #responde de forma afirmativa, sigue entusiasmado
-  - action: action_mood_great #se guarda en slot de tipo lista que la respuesta a la opinion 2 fue favorable
+  - action: action_set_mood #se guarda en slot de tipo lista que la respuesta a la opinion 2 fue favorable
   - checkpoint: ya seteo opinion 2
 
-- story: pedir entrevista beca (opinion 2 mala rspuesta)
+- story: pedir entrevista beca (opinion 2 mala rspuesta) #listo
   steps:
   - checkpoint: opino_cobrar_otra_beca
   - intent: mood_unhappy #responde de forma negativa, cabizbajo
-  - action: action_mood_unhappy #se guarda en slot de tipo lista que la respuesta a la opinion 2 fue desfavorable
+  - action: action_set_mood #se guarda en slot de tipo lista que la respuesta a la opinion 2 fue desfavorable
   - checkpoint: ya seteo opinion 2
 
 - story: pedir entrevista beca (2 opiniones)
@@ -175,7 +175,7 @@ stories:
   - action: action_cantidad_grupo_familiar #pregunta por cantidad de miembros del grupo familiar. la pregunta se articula segun el mood registrado por las anteriores opiniones
   - intent: entrevista_cantidad_familia #responde cuantos miembros tiene la familia
   - action: action_set_cantidad_familia #guarda el dato en un slot
-  - action: action_cuantos_trabajan #pregunta por cantidad de miembros del grupo familiar que trabajen, la pregunta se articula segun el mood registrado por las anteriores opiniones
+  - action: utter_cuantos_trabajan #pregunta por cantidad de miembros del grupo familiar que trabajen
   - intent: entrevista_cantidad_trabajan #responde cuantos miembros de la familia trabajan
   - action: action_set_cantidad_trabajan #guarda el dato en un slot
   - action: action_opinar_trabajo_familia #opina sobre el solicitante en relacion a la cantidad de miembros de la familia y la cantidad de ellos que tiene trabajo

@@ -334,10 +334,10 @@ class ActionSetMood(Action):
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         intent = tracker.latest_message['intent'].get('name')
         if (intent == "mood_great"):
-            mood.append(1)
+            self.mood.append(1)
             return [SlotSet("mood", mood)]
         elif (intent == "mood_unhappy"):
-            mood.append(0)
+            self.mood.append(0)
             return [SlotSet("mood", mood)]
         else:
             return []
@@ -385,9 +385,53 @@ class ActionOpinarOtraBeca(Action):
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         if (tracker.get_slot("otra_beca")):
-            salida = ""
+            salida = "Ser beneficiario de otras becas no es una condición que impulse a los postulantes a estar más cerca de convertirse en beneficiarios de nuestro programa"
             disptacher.utter_message(text=str(salida))
         elif not (tracker.get_slot("otra_beca")):
-            salida = ""
+            salida = "Eso te da un buen empujón, las becas de la universidad no son compatibles con otro tipo de ayudas"
             disptacher.utter_message(text=str(salida))
         return []
+
+class ActionCantidadFamilia(Action):
+
+    def name(self) -> Text:
+        return "action_cantidad_grupo_familiar"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        mood = getMood(tracker.get_slot("mood"))
+        if (mood < 0.5):
+            salida = "Y contame " + tracker.get_slot("nombre") + ", cuantas personas viven con vos"
+            dispatcher.utter_message(text=str(salida))
+        elif (mood >= 0.5):
+            salida = "Por cuantas personas esta conformado tu grupo familiar conviviente?"
+            dispatcher.utter_message(text=str(salida))
+        return []
+
+class ActionSetCantidadFamilia(Action):
+
+    def name(self) -> Text:
+        return "action_set_cantidad_familia"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        intent = tracker.latest_message['intent'].get('name')
+        if (intent == "entrevista_cantidad_familia"):
+            cantidad = next(tracker.get_latest_entity_values("cantidad familia"), None)
+            return [SlotSet("cantidad_familia", float(cantidad))]
+        else:
+            return []
+
+class ActionSetCantidadTrabajan(Action):
+
+    def name(self) -> Text:
+        return "action_set_cantidad_trabajan"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        intent = tracker.latest_message['intent'].get('name')
+        if (intent == "entrevista_cantidad_trabajan"):
+            cantidad = next(tracker.get_latest_entity_values("familia trabajadora"), None)
+            if (str(cantidad) == "ninguno"):
+                return [SlotSet("familia_trabajadora", 0)]
+            else:
+                return [SlotSet("familia_trabajadora", float(cantidad))]
+        else:
+            return []
